@@ -2,29 +2,29 @@
   {
     "category": "Frontend",
     "skills": [
-      { "name": "HTML", "level": 4 },
-      { "name": "CSS / Sass", "level": 4 },
-      { "name": "JavaScript", "level": 4 },
-      { "name": "TypeScript", "level": 4 },
-      { "name": "React", "level": 4 },
-      { "name": "Next.js", "level": 4 }
+      { "name": "HTML", "level": 4, "years": 5 },
+      { "name": "CSS / Sass", "level": 4, "years": 5 },
+      { "name": "JavaScript", "level": 4, "years": 5 },
+      { "name": "TypeScript", "level": 4, "years": 3 },
+      { "name": "React", "level": 4, "years": 3 },
+      { "name": "Next.js", "level": 4, "years": 2 }
     ]
   },
   {
     "category": "Backend",
     "skills": [
-      { "name": "Node.js", "level": 3 },
-      { "name": "Express", "level": 3 },
-      { "name": "Python", "level": 3 },
-      { "name": "Flask", "level": 2 }
+      { "name": "Node.js", "level": 3, "years": 2 },
+      { "name": "Express", "level": 3, "years": 2 },
+      { "name": "Python", "level": 3, "years": 1 },
+      { "name": "Flask", "level": 2, "years": 1 }
     ]
   },
   {
     "category": "Others",
     "skills": [
-      { "name": "Git", "level": 4 },
-      { "name": "Docker", "level": 3 },
-      { "name": "Figma", "level": 3 }
+      { "name": "Git", "level": 4, "years": 5 },
+      { "name": "Docker", "level": 3, "years": 2 },
+      { "name": "Figma", "level": 3, "years": 1 }
     ]
   }
 ]
