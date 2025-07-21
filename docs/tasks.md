@@ -26,7 +26,7 @@
 
 ## フェーズ4: コンテンツの作成と投入
 
-- [ ] 1. `_contents/skills.json` にスキル情報を記述
+- [x] 1. `_contents/skills.json` にスキル情報を記述
 - [ ] 2. `_contents/projects/` に実績・作品のMarkdownファイルを作成
 - [ ] 3. 各ページのテキストコンテンツを作成
 

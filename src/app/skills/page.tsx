@@ -4,8 +4,9 @@ import skillsData from '../../../_contents/skills.json';
 
 interface Skill {
   name: string;
-  level: number;
-  years: number;
+  level?: number;
+  years?: number;
+  date?: string;
 }
 
 interface SkillCategory {
@@ -55,13 +56,24 @@ const SkillsPage: React.FC = () => {
                 <Box>
                   {category.skills.map((skill) => (
                     <Box key={skill.name} sx={{ mb: 2 }}>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography variant="body1" component="div">
-                          {skill.name}
-                        </Typography>
-                        <Chip label={`${skill.years}年`} size="small" />
-                      </Box>
-                      <Rating name={skill.name} value={skill.level} readOnly max={5} />
+                      {category.category === '資格' ? (
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <Typography variant="body1" component="div">
+                            {skill.name}
+                          </Typography>
+                          {skill.date && <Chip label={skill.date} size="small" />}
+                        </Box>
+                      ) : (
+                        <>
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <Typography variant="body1" component="div">
+                              {skill.name}
+                            </Typography>
+                            {skill.years !== undefined && <Chip label={`${skill.years}年`} size="small" />}
+                          </Box>
+                          {skill.level !== undefined && <Rating name={skill.name} value={skill.level} readOnly max={5} />}
+                        </>
+                      )}
                     </Box>
                   ))}
                 </Box>

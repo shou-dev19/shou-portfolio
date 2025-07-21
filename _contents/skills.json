@@ -2,29 +2,49 @@
   {
     "category": "Frontend",
     "skills": [
-      { "name": "HTML", "level": 4, "years": 5 },
-      { "name": "CSS / Sass", "level": 4, "years": 5 },
-      { "name": "JavaScript", "level": 4, "years": 5 },
-      { "name": "TypeScript", "level": 4, "years": 3 },
-      { "name": "React", "level": 4, "years": 3 },
-      { "name": "Next.js", "level": 4, "years": 2 }
+      { "name": "HTML", "level": 4, "years": 2 },
+      { "name": "CSS", "level": 4, "years": 2 },
+      { "name": "JavaScript", "level": 4, "years": 2 },
+      { "name": "TypeScript", "level": 4, "years": 2 },
+      { "name": "React", "level": 4, "years": 1 },
+      { "name": "Next.js", "level": 1, "years": 0.1 },
+      { "name": "Angular", "level": 3, "years": 0.5 },
+      { "name": "Dart", "level": 5, "years": 3 },
+      { "name": "Flutter", "level": 5, "years": 3 }
     ]
   },
   {
     "category": "Backend",
     "skills": [
-      { "name": "Node.js", "level": 3, "years": 2 },
-      { "name": "Express", "level": 3, "years": 2 },
-      { "name": "Python", "level": 3, "years": 1 },
-      { "name": "Flask", "level": 2, "years": 1 }
+      { "name": "Node.js", "level": 3, "years": 1 },
+      { "name": "Express", "level": 3, "years": 1 },
+      { "name": "Python", "level": 5, "years": 1.5 },
+      { "name": "Java", "level": 4, "years": 2 },
+      { "name": "Spring Boot", "level": 3, "years": 0.5 },
+      { "name": "Struts", "level": 3, "years": 1.5 },
+      { "name": "PHP", "level": 4, "years": 1 },
+      { "name": "Laravel", "level": 3, "years": 1 },
+      { "name": "Django", "level": 2, "years": 0.1 },
+      { "name": "Rust", "level": 4, "years": 2.5 }
     ]
   },
   {
     "category": "Others",
     "skills": [
-      { "name": "Git", "level": 4, "years": 5 },
-      { "name": "Docker", "level": 3, "years": 2 },
-      { "name": "Figma", "level": 3, "years": 1 }
+      { "name": "Git", "level": 5, "years": 5 },
+      { "name": "Docker", "level": 4, "years": 3 },
+      { "name": "Figma", "level": 3, "years": 0.5 },
+      { "name": "TensorFlow", "level": 3, "years": 0.5 },
+      { "name": "Jira/Confluence", "level": 5, "years": 3 },
+      { "name": "Slack", "level": 5, "years": 3 }
+    ]
+  },
+  {
+    "category": "資格",
+    "skills": [
+      { "name": "Registered Scrum Master (RSM)", "date": "2023/06/29" },
+      { "name": "AWS Certified Solutions Architect - Associate (SAA)", "date": "2025/06/16" },
+      { "name": "基本情報技術者試験", "date": "2016/10/16" }
     ]
   }
 ]
