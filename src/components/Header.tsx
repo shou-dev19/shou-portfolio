@@ -1,22 +1,81 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+"use client";
+
+import React, { useState } from 'react';
+import { AppBar, Toolbar, Typography, Button, IconButton, Drawer, List, ListItem, ListItemText, useTheme, useMediaQuery } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 
 const Header: React.FC = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (
+      event.type === 'keydown' &&
+      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
+    ) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  const menuItems = [
+    { text: 'Skills', href: '/#skills' },
+    { text: 'Projects', href: '/#projects' },
+    { text: 'Outputs', href: '/#outputs' },
+    { text: 'Contact', href: '/#contact' },
+  ];
+
+  const drawer = (
+    <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <div
+        role="presentation"
+        onClick={toggleDrawer(false)}
+        onKeyDown={toggleDrawer(false)}
+      >
+        <List>
+          {menuItems.map((item) => (
+            <ListItem button key={item.text} component={Link} href={item.href}>
+              <ListItemText primary={item.text} />
+            </ListItem>
+          ))}
+        </List>
+      </div>
+    </Drawer>
+  );
+
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <Button component={Link} href="/" sx={{ color: 'white' }}>
-            My Portfolio
-          </Button>
-        </Typography>
-        <Button component={Link} href="/#skills" color="inherit">Skills</Button>
-        <Button component={Link} href="/#projects" color="inherit">Projects</Button>
-        <Button component={Link} href="/#outputs" color="inherit">Outputs</Button>
-        <Button component={Link} href="/#contact" color="inherit">Contact</Button>
-      </Toolbar>
-    </AppBar>
+    <>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Button component={Link} href="/" sx={{ color: 'white' }}>
+              My Portfolio
+            </Button>
+          </Typography>
+          {isMobile ? (
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+          ) : (
+            <>
+              {menuItems.map((item) => (
+                <Button key={item.text} component={Link} href={item.href} color="inherit">
+                  {item.text}
+                </Button>
+              ))}
+            </>
+          )}
+        </Toolbar>
+      </AppBar>
+      {drawer}
+    </>
   );
 };
 
