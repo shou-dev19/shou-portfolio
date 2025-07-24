@@ -1,20 +1,26 @@
 import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
+import ReactMarkdown from 'react-markdown';
 import SkillsPage from './skills/page';
 import ProjectsPage from './projects/page';
 import OutputsPage from './outputs/page';
 import ContactPage from './contact/page';
+import fs from 'fs/promises';
+import path from 'path';
 
-const HomePage: React.FC = () => {
+const HomePage = async () => {
+  const markdownPath = path.join(process.cwd(), '_contents', 'self-introduction.md');
+  const markdown = await fs.readFile(markdownPath, 'utf-8');
+
   return (
     <Container>
-      <Box sx={{ my: 4, textAlign: 'center' }}>
-        <Typography variant="h2" component="h1" gutterBottom>
-          Welcome to My Portfolio
+      <Box sx={{ my: 4 }}>
+        <Typography variant="h2" component="h1" gutterBottom textAlign="center">
+          Profile
         </Typography>
-        <Typography variant="h5" component="h2" color="textSecondary">
-          I'm a software engineer.
-        </Typography>
+        <Box sx={{ my: 4 }}>
+          <ReactMarkdown>{markdown}</ReactMarkdown>
+        </Box>
       </Box>
 
       <Box id="skills" sx={{ my: 8 }}>
