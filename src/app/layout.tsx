@@ -15,10 +15,10 @@ export const metadata: Metadata = {
     title: "My Portfolio",
     description: "This is my portfolio website.",
     type: "website",
-    url: "https://your-domain.com", // TODO: デプロイ後に正式なURLに更新
+    url: "https://shou-portfolio.vercel.app/",
     images: [
       {
-        url: "https://your-domain.com/ogp.png", // TODO: OGP画像を作成して配置
+        url: "https://shou-portfolio.vercel.app/myicon.png",
         width: 1200,
         height: 630,
         alt: "My Portfolio OGP Image",

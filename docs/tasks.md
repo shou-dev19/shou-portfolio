@@ -34,5 +34,5 @@
 
 - [x] 1. レスポンシブデザインの最終調整
 - [x] 2. OGP (Open Graph Protocol) 設定の実装
-- [ ] 3. Vercelへのデプロイ
+- [x] 3. Vercelへのデプロイ
 - [ ] 4. 動作確認
