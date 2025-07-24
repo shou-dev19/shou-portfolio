@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Typography, Grid, Card, CardContent, CardMedia } from '@mui/material';
+import { Container, Typography, Card, CardContent, CardMedia } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -39,7 +40,7 @@ const ProjectsPage: React.FC = () => {
       </Typography>
       <Grid container spacing={4}>
         {allProjectsData.map(({ id, title, image }) => (
-          <Grid item xs={12} sm={6} md={4} key={id}>
+          <Grid xs={12} sm={6} md={4} key={id}>
             <Card>
               {image && (
                 <CardMedia
