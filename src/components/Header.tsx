@@ -50,8 +50,8 @@ const Header: React.FC = () => {
       <AppBar position="sticky">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Button component={Link} href="/" sx={{ color: 'white' }}>
-              My Portfolio
+            <Button component={Link} href="/" sx={{ color: 'white', fontSize: '1.25rem' }}>
+              SHOU's Portfolio
             </Button>
           </Typography>
           {isMobile ? (

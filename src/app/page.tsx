@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import { Container, Typography, Box, Avatar } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 import SkillsPage from './skills/page';
 import ProjectsPage from './projects/page';
@@ -18,6 +18,13 @@ const HomePage = async () => {
         <Typography variant="h2" component="h1" gutterBottom textAlign="center">
           Profile
         </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+          <Avatar
+            alt="My Icon"
+            src="/myicon.png"
+            sx={{ width: 120, height: 120 }}
+          />
+        </Box>
         <Box sx={{ my: 4 }}>
           <ReactMarkdown>{markdown}</ReactMarkdown>
         </Box>
