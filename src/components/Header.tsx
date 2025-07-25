@@ -51,7 +51,7 @@ const Header: React.FC = () => {
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Button component={Link} href="/" sx={{ color: 'white', fontSize: '1.25rem' }}>
-              SHOU's Portfolio
+              SHOU&apos;s Portfolio
             </Button>
           </Typography>
           {isMobile ? (
