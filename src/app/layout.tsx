@@ -9,11 +9,11 @@ import Layout from '../components/Layout';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "This is my portfolio website.",
+  title: "SHOU's Portfolio",
+  description: "This is a portfolio website by SHOU.",
   openGraph: {
-    title: "My Portfolio",
-    description: "This is my portfolio website.",
+    title: "SHOU's Portfolio",
+    description: "This is a portfolio website by SHOU.",
     type: "website",
     url: "https://shou-portfolio.vercel.app/",
     images: [

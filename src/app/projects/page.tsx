@@ -41,7 +41,16 @@ const ProjectsPage: React.FC = () => {
       <Grid container spacing={4}>
         {allProjectsData.map(({ id, title, image }) => (
           <Grid xs={12} sm={6} md={4} key={id}>
-            <Card>
+            <Card sx={{
+              height: '100%', // カードの高さを揃える
+              display: 'flex',
+              flexDirection: 'column',
+              transition: 'transform 0.3s, box-shadow 0.3s',
+              '&:hover': {
+                transform: 'translateY(-5px)',
+                boxShadow: 6, // MUIのelevationレベル
+              },
+            }}>
               {image && (
                 <CardMedia
                   component="img"
