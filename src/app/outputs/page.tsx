@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, List, ListItem, ListItemText, Link } from '@mui/material';
+import { Box, Typography, List, ListItem, ListItemText, Link, Card } from '@mui/material';
 
 const outputs = [
   {
@@ -25,13 +25,15 @@ const OutputsPage: React.FC = () => {
       <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4 }}>
         Outputs
       </Typography>
-      <List>
-        {outputs.map((output) => (
-          <ListItem key={output.title} component={Link} href={output.url} target="_blank" rel="noopener noreferrer">
-            <ListItemText primary={output.title} secondary={output.description} />
-          </ListItem>
-        ))}
-      </List>
+      <Card sx={{ borderRadius: 2, boxShadow: 3, p: 2 }}>
+        <List>
+          {outputs.map((output) => (
+            <ListItem key={output.title} component={Link} href={output.url} target="_blank" rel="noopener noreferrer">
+              <ListItemText primary={output.title} secondary={output.description} />
+            </ListItem>
+          ))}
+        </List>
+      </Card>
     </Box>
   );
 };

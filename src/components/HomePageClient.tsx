@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Container, Typography, Box, Avatar } from '@mui/material';
+import { Container, Typography, Box, Avatar, Button } from '@mui/material';
 import { motion, Variants } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 
@@ -18,14 +18,64 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <Box>
+      {/* Welcome Section */}
+      <Box
+        sx={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+          backgroundImage: 'url(/haikei.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          color: 'white',
+          p: 4,
+        }}
+      >
+        <Typography variant="h3" component="h1" gutterBottom>
+          SHOUのポートフォリオへようこそ
+        </Typography>
+        <Typography variant="h6" component="p" sx={{ mb: 4 }}>
+          これまでの経験とスキル、そして情熱をご覧ください。
+        </Typography>
+        <Box>
+          <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('profile')} sx={{ m: 1 }}>
+            Profile
+          </Button>
+          <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('skills')} sx={{ m: 1 }}>
+            Skills
+          </Button>
+          <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('projects')} sx={{ m: 1 }}>
+            Projects
+          </Button>
+          <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('outputs')} sx={{ m: 1 }}>
+            Outputs
+          </Button>
+          <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('contact')} sx={{ m: 1 }}>
+            Contact
+          </Button>
+        </Box>
+      </Box>
+
+      {/* Profile Section */}
       <motion.div
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
       >
-        <Box sx={{
+        <Box id="profile" sx={{
           my: 4,
           textAlign: 'center',
           backgroundImage: 'url(/haikei.jpg)',
@@ -60,7 +110,10 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
       >
         <Box id="skills" sx={{
           my: 8,
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          backgroundImage: 'url(/haikei.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
           p: 4,
           borderRadius: 2,
           boxShadow: 3,
@@ -93,7 +146,10 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
       >
         <Box id="outputs" sx={{
           my: 8,
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          backgroundImage: 'url(/haikei.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
           p: 4,
           borderRadius: 2,
           boxShadow: 3,
@@ -108,7 +164,10 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
       >
         <Box id="contact" sx={{
           my: 8,
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          backgroundImage: 'url(/haikei.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
           p: 4,
           borderRadius: 2,
           boxShadow: 3,

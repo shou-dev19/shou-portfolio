@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, TextField, Button, Box } from '@mui/material';
+import { Box, Typography, TextField, Button, Card } from '@mui/material';
 
 const ContactPage: React.FC = () => {
   return (
@@ -7,7 +7,8 @@ const ContactPage: React.FC = () => {
       <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4 }}>
         Contact
       </Typography>
-      <Box component="form" noValidate autoComplete="off">
+      <Card sx={{ borderRadius: 2, boxShadow: 3, p: 2 }}>
+        <Box component="form" noValidate autoComplete="off">
         <TextField
           fullWidth
           label="Name"
@@ -38,6 +39,7 @@ const ContactPage: React.FC = () => {
           Send Message
         </Button>
       </Box>
+      </Card>
     </Box>
   );
 };
