@@ -1,5 +1,8 @@
 import React from 'react';
-import { Box, Typography, List, ListItem, ListItemText, Link, Card } from '@mui/material';
+import { Box, Typography, List, ListItem, ListItemText, Link, Card, ListItemIcon } from '@mui/material';
+import ArticleIcon from '@mui/icons-material/Article';
+import RssFeedIcon from '@mui/icons-material/RssFeed';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const outputs = [
   {
@@ -29,6 +32,11 @@ const OutputsPage: React.FC = () => {
         <List>
           {outputs.map((output) => (
             <ListItem key={output.title} component={Link} href={output.url} target="_blank" rel="noopener noreferrer">
+              <ListItemIcon>
+                {output.title === 'Qiita' && <ArticleIcon />}
+                {output.title === 'Blog' && <RssFeedIcon />}
+                {output.title === 'GitHub' && <GitHubIcon />}
+              </ListItemIcon>
               <ListItemText primary={output.title} secondary={output.description} />
             </ListItem>
           ))}

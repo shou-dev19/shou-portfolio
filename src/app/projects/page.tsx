@@ -13,6 +13,8 @@ interface ProjectData {
   image: string;
   description: string;
   content: string;
+  github?: string;
+  demo?: string;
 }
 
 const projectsDirectory = path.join(process.cwd(), '_contents/projects');
@@ -29,7 +31,7 @@ function getSortedProjectsData(): ProjectData[] {
     return {
       id,
       content: matterResult.content,
-      ...(matterResult.data as { title: string; date: string; image: string; description: string }),
+      ...(matterResult.data as { title: string; date: string; image: string; description: string; github?: string; demo?: string; }),
     };
   });
 

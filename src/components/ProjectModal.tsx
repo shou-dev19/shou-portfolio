@@ -1,11 +1,15 @@
 import React from 'react';
-import { Modal, Box, Typography } from '@mui/material';
+import { Modal, Box, Typography, Button } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LaunchIcon from '@mui/icons-material/Launch';
 import ReactMarkdown from 'react-markdown';
 
 interface ProjectModalProps {
   project: {
     title: string;
     content: string;
+    github?: string;
+    demo?: string;
   };
   onClose: () => void;
 }
@@ -37,6 +41,18 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
         <Typography id="modal-modal-title" variant="h4" component="h2">
           {project.title}
         </Typography>
+        <Box sx={{ mt: 2, mb: 2 }}>
+          {project.github && (
+            <Button variant="contained" startIcon={<GitHubIcon />} href={project.github} target="_blank" rel="noopener noreferrer" sx={{ mr: 1 }}>
+              GitHub
+            </Button>
+          )}
+          {project.demo && (
+            <Button variant="contained" startIcon={<LaunchIcon />} href={project.demo} target="_blank" rel="noopener noreferrer">
+              Demo
+            </Button>
+          )}
+        </Box>
         <Box id="modal-modal-description" sx={{ mt: 2 }}>
           <ReactMarkdown>{project.content}</ReactMarkdown>
         </Box>

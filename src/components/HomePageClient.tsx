@@ -85,20 +85,34 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
           p: 4,
           borderRadius: 2,
           boxShadow: 3,
+          position: 'relative',
+          zIndex: 0,
         }}>
-          <Typography variant="h4" component="h1" gutterBottom sx={{ color: 'white' }}>
-            Profile
-          </Typography>
-          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
-            <Avatar
-              alt="My Icon"
-              src="/myicon.png"
-              sx={{ width: 120, height: 120 }}
-            />
+          <Box sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.4)', // 半透明の黒色オーバーレイ
+            zIndex: 1,
+            borderRadius: 2,
+          }} />
+          <Box sx={{ position: 'relative', zIndex: 2 }}>
+            <Typography variant="h4" component="h1" gutterBottom sx={{ color: 'white' }}>
+              Profile
+            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+              <Avatar
+                alt="My Icon"
+                src="/myicon.png"
+                sx={{ width: 120, height: 120 }}
+              />
+            </Box>
+            <Card sx={{ my: 4, textAlign: 'left', p: 4, borderRadius: 2, boxShadow: 3 }}>
+              <ReactMarkdown>{markdown}</ReactMarkdown>
+            </Card>
           </Box>
-          <Card sx={{ my: 4, textAlign: 'left', p: 4, borderRadius: 2, boxShadow: 3 }}>
-            <ReactMarkdown>{markdown}</ReactMarkdown>
-          </Card>
         </Box>
       </motion.div>
 
@@ -117,7 +131,21 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
           p: 4,
           borderRadius: 2,
           boxShadow: 3,
-        }}>{skills}</Box>
+          position: 'relative',
+          zIndex: 0,
+        }}>
+          <Box sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.4)', // 半透明の黒色オーバーレイ
+            zIndex: 1,
+            borderRadius: 2,
+          }} />
+          <Box sx={{ position: 'relative', zIndex: 2 }}>{skills}</Box>
+        </Box>
       </motion.div>
 
       <motion.div
@@ -135,7 +163,21 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
           p: 4,
           borderRadius: 2,
           boxShadow: 3,
-        }}>{projects}</Box>
+          position: 'relative',
+          zIndex: 0,
+        }}>
+          <Box sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.4)', // 半透明の黒色オーバーレイ
+            zIndex: 1,
+            borderRadius: 2,
+          }} />
+          <Box sx={{ position: 'relative', zIndex: 2 }}>{projects}</Box>
+        </Box>
       </motion.div>
 
       <motion.div
@@ -153,7 +195,21 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
           p: 4,
           borderRadius: 2,
           boxShadow: 3,
-        }}>{outputs}</Box>
+          position: 'relative',
+          zIndex: 0,
+        }}>
+          <Box sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.4)', // 半透明の黒色オーバーレイ
+            zIndex: 1,
+            borderRadius: 2,
+          }} />
+          <Box sx={{ position: 'relative', zIndex: 2 }}>{outputs}</Box>
+        </Box>
       </motion.div>
 
       <motion.div
@@ -171,7 +227,21 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
           p: 4,
           borderRadius: 2,
           boxShadow: 3,
-        }}>{contact}</Box>
+          position: 'relative',
+          zIndex: 0,
+        }}>
+          <Box sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.4)', // 半透明の黒色オーバーレイ
+            zIndex: 1,
+            borderRadius: 2,
+          }} />
+          <Box sx={{ position: 'relative', zIndex: 2 }}>{contact}</Box>
+        </Box>
       </motion.div>
     </Box>
   );
