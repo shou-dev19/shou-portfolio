@@ -21,6 +21,8 @@ const Header: React.FC = () => {
   };
 
   const menuItems = [
+    { text: 'Welcome', href: '/' },
+    { text: 'Profile', href: '/#profile' },
     { text: 'Skills', href: '/#skills' },
     { text: 'Projects', href: '/#projects' },
     { text: 'Outputs', href: '/#outputs' },
@@ -36,7 +38,17 @@ const Header: React.FC = () => {
       >
         <List>
           {menuItems.map((item) => (
-            <ListItem button key={item.text} component={Link} href={item.href}>
+            <ListItem button key={item.text} component={Link} href={item.href} scroll={false} onClick={() => {
+              if (item.href === '/') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else if (item.href.startsWith('/#')) {
+                const id = item.href.substring(2);
+                const element = document.getElementById(id);
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }
+            }}>
               <ListItemText primary={item.text} />
             </ListItem>
           ))}
@@ -66,7 +78,17 @@ const Header: React.FC = () => {
           ) : (
             <>
               {menuItems.map((item) => (
-                <Button key={item.text} component={Link} href={item.href} color="inherit">
+                <Button key={item.text} component={Link} href={item.href} color="inherit" scroll={false} onClick={() => {
+                  if (item.href === '/') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  } else if (item.href.startsWith('/#')) {
+                    const id = item.href.substring(2);
+                    const element = document.getElementById(id);
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
+                }}>
                   {item.text}
                 </Button>
               ))}
