@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -46,12 +46,12 @@ const ProjectsPage = () => {
   const allProjectsData = getSortedProjectsData();
 
   return (
-    <Container sx={{ py: 4 }}>
+    <Box sx={{ py: 4, px: { xs: 2, md: 8 } }}>
       <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4 }}>
         Projects
       </Typography>
       <ProjectListClient projects={allProjectsData} />
-    </Container>
+    </Box>
   );
 };
 

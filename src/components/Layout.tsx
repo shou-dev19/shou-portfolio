@@ -15,10 +15,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
-        backgroundImage: 'url(/haikei.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
         position: 'relative',
       }}
     >

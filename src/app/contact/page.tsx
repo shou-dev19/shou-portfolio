@@ -3,7 +3,7 @@ import { Container, Typography, TextField, Button, Box } from '@mui/material';
 
 const ContactPage: React.FC = () => {
   return (
-    <Container maxWidth="sm" sx={{ py: 4 }}>
+    <Box sx={{ py: 4, px: { xs: 2, md: 8 } }}>
       <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4 }}>
         Contact
       </Typography>
@@ -38,7 +38,7 @@ const ContactPage: React.FC = () => {
           Send Message
         </Button>
       </Box>
-    </Container>
+    </Box>
   );
 };
 
