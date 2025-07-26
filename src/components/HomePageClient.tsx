@@ -86,7 +86,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
           borderRadius: 2,
           boxShadow: 3,
         }}>
-          <Typography variant="h2" component="h1" gutterBottom>
+          <Typography variant="h4" component="h1" gutterBottom sx={{ color: 'white' }}>
             Profile
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
@@ -96,7 +96,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
               sx={{ width: 120, height: 120 }}
             />
           </Box>
-          <Card sx={{ my: 4, textAlign: 'left', p: 4, borderRadius: 2, boxShadow: 3, backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+          <Card sx={{ my: 4, textAlign: 'left', p: 4, borderRadius: 2, boxShadow: 3 }}>
             <ReactMarkdown>{markdown}</ReactMarkdown>
           </Card>
         </Box>

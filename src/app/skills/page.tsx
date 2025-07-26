@@ -27,7 +27,7 @@ const SkillsPage: React.FC = () => {
 
   return (
     <Box sx={{ py: 4, px: { xs: 2, md: 8 } }}>
-      <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4 }}>
+      <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4, color: 'white' }}>
         Skills
       </Typography>
 
