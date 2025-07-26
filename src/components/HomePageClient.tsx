@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Container, Typography, Box, Avatar, Button } from '@mui/material';
+import { Container, Typography, Box, Avatar, Button, Card } from '@mui/material';
 import { motion, Variants } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 
@@ -96,9 +96,9 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
               sx={{ width: 120, height: 120 }}
             />
           </Box>
-          <Box sx={{ my: 4, textAlign: 'left' }}>
+          <Card sx={{ my: 4, textAlign: 'left', p: 4, borderRadius: 2, boxShadow: 3, backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
             <ReactMarkdown>{markdown}</ReactMarkdown>
-          </Box>
+          </Card>
         </Box>
       </motion.div>
 
