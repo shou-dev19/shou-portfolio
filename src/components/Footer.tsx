@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
         {/* 他に追加したいソーシャルリンクがあればここに追加 */}
       </Box>
       <Typography variant="body2" color="textSecondary">
-        &copy; {new Date().getFullYear()} My Portfolio. All Rights Reserved.
+        &copy; {new Date().getFullYear()} SHOU&apos;s Portfolio. All Rights Reserved.
       </Typography>
     </Box>
   );

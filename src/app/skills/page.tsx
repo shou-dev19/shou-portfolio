@@ -26,29 +26,31 @@ const SkillsPage: React.FC = () => {
   const skills: SkillCategory[] = skillsData;
 
   return (
-    <Container sx={{ py: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4 }}>
+    <Box sx={{ py: 4, px: { xs: 2, md: 8 } }}>
+      <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4, color: 'white' }}>
         Skills
       </Typography>
 
-      <Box sx={{ mb: 4, p: 2, border: '1px solid', borderColor: 'divider', borderRadius: 1 }}>
-        <Typography variant="h6" component="h3" gutterBottom>
-          スキルレベルの凡例
-        </Typography>
-        {Object.entries(levelDescription).map(([level, desc]) => (
-          <Box key={level} sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-            <Rating name={`level-${level}`} value={Number(level)} readOnly max={5} size="small" />
-            <Typography variant="body2" sx={{ ml: 1 }}>
-              : {desc}
-            </Typography>
-          </Box>
-        ))}
-      </Box>
+      <Card sx={{ mb: 4, p: 2, borderRadius: 2, boxShadow: 3 }}>
+        <CardContent>
+          <Typography variant="h6" component="h3" gutterBottom>
+            スキルレベルの凡例
+          </Typography>
+          {Object.entries(levelDescription).map(([level, desc]) => (
+            <Box key={level} sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+              <Rating name={`level-${level}`} value={Number(level)} readOnly max={5} size="small" />
+              <Typography variant="body2" sx={{ ml: 1 }}>
+                : {desc}
+              </Typography>
+            </Box>
+          ))}
+        </CardContent>
+      </Card>
 
       <Grid container spacing={4}>
         {skills.map((category) => (
           <Grid item xs={12} md={6} key={category.category}>
-            <Card sx={{ height: '100%' }}>
+            <Card sx={{ height: '100%', borderRadius: 2, boxShadow: 3 }}>
               <CardContent>
                 <Typography variant="h5" component="h2" gutterBottom align="center">
                   {category.category}
@@ -82,7 +84,7 @@ const SkillsPage: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-    </Container>
+    </Box>
   );
 };
 
