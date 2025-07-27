@@ -1,7 +1,7 @@
 ---
 title: "ポートフォリオサイト"
 date: "2024-07-20"
-image: "/_screenshots/portfolio.png"
+image: "/portfolio_image.png"
 description: "Next.jsとMUIを駆使し、Gemini CLIとの協業で開発したポートフォリオサイトです。要件定義から設計、実装、デプロイまでの全工程を体系的に管理・実行しました。"
 ---
 
@@ -10,6 +10,8 @@ description: "Next.jsとMUIを駆使し、Gemini CLIとの協業で開発した�
 このポートフォリオサイトは、自身のスキルと経験を効果的に伝えるために開発しました。
 最大の特徴は、**Googleの生成AI「Gemini CLI」を開発パートナーとして全面的に採用**した点です。
 「要件定義 → 設計 → タスク化」という体系的な開発プロセスを`docs`ディレクトリで管理し、Gemini CLIに各タスクを指示することで、ボトムアップかつ着実に開発を進めました。
+
+- **GitHubリポジトリ:** [https://github.com/shou-dev19/shou-portfolio](https://github.com/shou-dev19/shou-portfolio)
 
 ## アピールポイント
 

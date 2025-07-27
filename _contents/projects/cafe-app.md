@@ -1,7 +1,7 @@
 ---
 title: "Flutter Cafe App"
 date: "2024-07-25"
-image: "/_screenshots/cafe-app.png"
+image: "/flutter-cafe-app_image.png"
 description: "FlutterとAWSサーバーレスアーキテクチャで構築したサンプルカフェアプリです。"
 ---
 # Flutter Cafe App - ポートフォリオ
