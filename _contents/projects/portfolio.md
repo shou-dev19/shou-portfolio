@@ -1,7 +1,7 @@
 ---
 title: "ポートフォリオサイト"
 date: "2024-07-20"
-image: "/portfolio_image.png"
+image: "/portfolio/portfolio_image.png"
 description: "Next.jsとMUIを駆使し、Gemini CLIとの協業で開発したポートフォリオサイトです。要件定義から設計、実装、デプロイまでの全工程を体系的に管理・実行しました。"
 ---
 

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     url: "https://shou-portfolio.vercel.app/",
     images: [
       {
-        url: "https://shou-portfolio.vercel.app/myicon.png",
+        url: "https://shou-devlog.com/portfolio/myicon.png",
         width: 1200,
         height: 630,
         alt: "My Portfolio OGP Image",

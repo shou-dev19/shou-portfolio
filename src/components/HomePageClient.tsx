@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React from 'react';
 import { Container, Typography, Box, Avatar, Button, Card } from '@mui/material';
 import { motion, Variants } from 'framer-motion';
@@ -36,7 +36,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
           justifyContent: 'center',
           alignItems: 'center',
           textAlign: 'center',
-          backgroundImage: 'url(/haikei.jpg)',
+          backgroundImage: 'url(/portfolio/haikei.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
@@ -78,7 +78,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
         <Box id="profile" sx={{
           my: 4,
           textAlign: 'center',
-          backgroundImage: 'url(/haikei.jpg)',
+          backgroundImage: 'url(/portfolio/haikei.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
@@ -105,7 +105,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
             <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
               <Avatar
                 alt="My Icon"
-                src="/myicon.png"
+                src="/portfolio/myicon.png"
                 sx={{ width: 120, height: 120 }}
               />
             </Box>
@@ -124,7 +124,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
       >
         <Box id="skills" sx={{
           my: 8,
-          backgroundImage: 'url(/haikei.jpg)',
+          backgroundImage: 'url(/portfolio/haikei.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
@@ -156,7 +156,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
       >
         <Box id="projects" sx={{
           my: 8,
-          backgroundImage: 'url(/haikei.jpg)',
+          backgroundImage: 'url(/portfolio/haikei.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
@@ -188,7 +188,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
       >
         <Box id="outputs" sx={{
           my: 8,
-          backgroundImage: 'url(/haikei.jpg)',
+          backgroundImage: 'url(/portfolio/haikei.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
@@ -220,7 +220,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
       >
         <Box id="contact" sx={{
           my: 8,
-          backgroundImage: 'url(/haikei.jpg)',
+          backgroundImage: 'url(/portfolio/haikei.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
