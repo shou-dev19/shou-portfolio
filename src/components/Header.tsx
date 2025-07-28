@@ -1,8 +1,28 @@
 "use client";
 
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton, Drawer, List, ListItem, ListItemText, useTheme, useMediaQuery } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  useTheme,
+  useMediaQuery,
+  Box,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonIcon from '@mui/icons-material/Person';
+import BuildIcon from '@mui/icons-material/Build';
+import WorkIcon from '@mui/icons-material/Work';
+import ArticleIcon from '@mui/icons-material/Article';
+import MailIcon from '@mui/icons-material/Mail';
 import Link from 'next/link';
 
 const Header: React.FC = () => {
@@ -21,39 +41,71 @@ const Header: React.FC = () => {
   };
 
   const menuItems = [
-    { text: 'Welcome', href: '/' },
-    { text: 'Profile', href: '/#profile' },
-    { text: 'Skills', href: '/#skills' },
-    { text: 'Projects', href: '/#projects' },
-    { text: 'Outputs', href: '/#outputs' },
-    { text: 'Contact', href: '/#contact' },
+    { text: 'Welcome', href: '/', icon: <HomeIcon /> },
+    { text: 'Profile', href: '/#profile', icon: <PersonIcon /> },
+    { text: 'Skills', href: '/#skills', icon: <BuildIcon /> },
+    { text: 'Projects', href: '/#projects', icon: <WorkIcon /> },
+    { text: 'Outputs', href: '/#outputs', icon: <ArticleIcon /> },
+    { text: 'Contact', href: '/#contact', icon: <MailIcon /> },
   ];
 
   const drawer = (
-    <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
-      <div
+    <Drawer
+      anchor="right"
+      open={drawerOpen}
+      onClose={toggleDrawer(false)}
+      PaperProps={{
+        sx: {
+          background: 'linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)',
+          color: 'white',
+          width: '60%',
+          maxWidth: '300px',
+        },
+      }}
+    >
+      <Box
+        sx={{
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+        }}
         role="presentation"
         onClick={toggleDrawer(false)}
         onKeyDown={toggleDrawer(false)}
       >
         <List>
-          {menuItems.map((item) => (
-            <ListItem button key={item.text} component={Link} href={item.href} scroll={false} onClick={() => {
-              if (item.href === '/') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              } else if (item.href.startsWith('/#')) {
-                const id = item.href.substring(2);
-                const element = document.getElementById(id);
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
+          {menuItems.map((item, index) => (
+            <ListItem
+              button
+              key={item.text}
+              component={Link}
+              href={item.href}
+              scroll={false}
+              onClick={() => {
+                if (item.href === '/') {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (item.href.startsWith('/#')) {
+                  const id = item.href.substring(2);
+                  const element = document.getElementById(id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }
-              }
-            }}>
+              }}
+              sx={{
+                paddingY: 2,
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                },
+              }}
+            >
+              <ListItemIcon sx={{ color: 'white', minWidth: '40px' }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItem>
           ))}
         </List>
-      </div>
+      </Box>
     </Drawer>
   );
 
@@ -78,17 +130,24 @@ const Header: React.FC = () => {
           ) : (
             <>
               {menuItems.map((item) => (
-                <Button key={item.text} component={Link} href={item.href} color="inherit" scroll={false} onClick={() => {
-                  if (item.href === '/') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  } else if (item.href.startsWith('/#')) {
-                    const id = item.href.substring(2);
-                    const element = document.getElementById(id);
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
+                <Button
+                  key={item.text}
+                  component={Link}
+                  href={item.href}
+                  color="inherit"
+                  scroll={false}
+                  onClick={() => {
+                    if (item.href === '/') {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else if (item.href.startsWith('/#')) {
+                      const id = item.href.substring(2);
+                      const element = document.getElementById(id);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
                     }
-                  }
-                }}>
+                  }}
+                >
                   {item.text}
                 </Button>
               ))}
