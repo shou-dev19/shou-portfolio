@@ -1,0 +1,25 @@
+{
+  "name": "Shou Portfolio Development",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-vscode,target=/home/node/.vscode-server,type=volume",
+    "source=${localWorkspaceFolderBasename}-gemini,target=/home/node/.gemini,type=volume"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "anthropic.claude-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "sudo chown node /home/node/.gemini && npm install",
+  "remoteUser": "node"
+}
