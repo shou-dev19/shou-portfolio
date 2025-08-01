@@ -4,3 +4,5 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:18
 # Install Gemini CLI
 RUN npm install -g @google/gemini-cli
 
+# Install Claude Code
+RUN npm install -g @anthropic-ai/claude-code
