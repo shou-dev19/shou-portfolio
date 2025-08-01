@@ -44,19 +44,26 @@
 ├── public/
 │   └── (画像などの静的ファイル)
 ├── src/
+│   ├── app/             # 各ページ (App Router)
+│   │   ├── layout.tsx     # ルートレイアウト
+│   │   ├── page.tsx       # トップページ
+│   │   ├── skills/
+│   │   │   └── page.tsx   # スキルページ
+│   │   ├── projects/
+│   │   │   └── page.tsx   # 実績・作品ページ
+│   │   ├── career/
+│   │   │   └── page.tsx   # 経歴ページ
+│   │   ├── outputs/
+│   │   │   └── page.tsx   # アウトプットページ
+│   │   └── contact/
+│   │       └── page.tsx   # お問い合わせページ
 │   ├── components/      # 共通コンポーネント
-│   │   ├── Layout.tsx
-│   │   └── ...
-│   ├── lib/             # 補助的な関数など
-│   ├── styles/          # グローバルなスタイル
-│   ├── types/           # 型定義
-│   └── pages/           # 各ページ
-│       ├── index.tsx      # トップページ (自己紹介)
-│       ├── skills.tsx     # スキルページ
-│       ├── projects.tsx   # 実績・作品ページ
-│       ├── outputs.tsx    # アウトプutページ
-│       └── contact.tsx    # お問い合わせページ
+│   │   ├── Header.tsx
+│   │   └── Footer.tsx
+│   └── theme.ts         # MUIのテーマ設定
 └── _contents/           # コンテンツ (Markdown/JSON)
+    ├── career/
+    │   └── 1.md
     ├── projects/
     │   ├── project-a.md
     │   └── project-b.md

@@ -6,6 +6,7 @@ import SkillsPage from './skills/page';
 import ProjectsPage from './projects/page';
 import OutputsPage from './outputs/page';
 import ContactPage from './contact/page';
+import CareerPage from './career/page';
 
 const HomePage = async () => {
   const markdownPath = path.join(process.cwd(), '_contents', 'self-introduction.md');
@@ -16,6 +17,7 @@ const HomePage = async () => {
       markdown={markdown}
       skills={<SkillsPage />}
       projects={<ProjectsPage />}
+      career={<CareerPage />}
       outputs={<OutputsPage />}
       contact={<ContactPage />}
     />

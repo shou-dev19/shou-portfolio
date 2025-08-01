@@ -8,11 +8,12 @@ interface HomePageClientProps {
   markdown: string;
   skills: React.ReactNode;
   projects: React.ReactNode;
+  career: React.ReactNode;
   outputs: React.ReactNode;
   contact: React.ReactNode;
 }
 
-const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, projects, outputs, contact }) => {
+const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, projects, career, outputs, contact }) => {
   const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
@@ -59,6 +60,9 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
           </Button>
           <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('projects')} sx={{ m: 1 }}>
             Projects
+          </Button>
+          <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('career')} sx={{ m: 1 }}>
+            Career
           </Button>
           <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('outputs')} sx={{ m: 1 }}>
             Outputs
@@ -177,6 +181,38 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
             borderRadius: 2,
           }} />
           <Box sx={{ position: 'relative', zIndex: 2 }}>{projects}</Box>
+        </Box>
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={sectionVariants}
+      >
+        <Box id="career" sx={{
+          my: 8,
+          backgroundImage: 'url(/portfolio/haikei.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          p: 4,
+          borderRadius: 2,
+          boxShadow: 3,
+          position: 'relative',
+          zIndex: 0,
+        }}>
+          <Box sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.4)', // 半透明の黒色オーバーレイ
+            zIndex: 1,
+            borderRadius: 2,
+          }} />
+          <Box sx={{ position: 'relative', zIndex: 2 }}>{career}</Box>
         </Box>
       </motion.div>
 

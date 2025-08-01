@@ -23,6 +23,7 @@ import BuildIcon from '@mui/icons-material/Build';
 import WorkIcon from '@mui/icons-material/Work';
 import ArticleIcon from '@mui/icons-material/Article';
 import MailIcon from '@mui/icons-material/Mail';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import Link from 'next/link';
 
 const Header: React.FC = () => {
@@ -45,6 +46,7 @@ const Header: React.FC = () => {
     { text: 'Profile', href: '/#profile', icon: <PersonIcon /> },
     { text: 'Skills', href: '/#skills', icon: <BuildIcon /> },
     { text: 'Projects', href: '/#projects', icon: <WorkIcon /> },
+    { text: 'Career', href: '/#career', icon: <BusinessCenterIcon /> },
     { text: 'Outputs', href: '/#outputs', icon: <ArticleIcon /> },
     { text: 'Contact', href: '/#contact', icon: <MailIcon /> },
   ];
