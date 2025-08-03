@@ -1,12 +1,24 @@
 {
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/portfolio"
+    },
+    {
       "source": "/portfolio",
       "destination": "/portfolio"
     },
     {
       "source": "/portfolio/:path*",
       "destination": "/portfolio/:path*"
+    },
+    {
+      "source": "/pokemon-quiz/(.*)",
+      "destination": "https://poke-type-quiz.vercel.app/pokemon-quiz/$1"
+    },
+    {
+      "source": "/pokemon-quiz",
+      "destination": "https://poke-type-quiz.vercel.app/pokemon-quiz"
     }
   ]
 }
