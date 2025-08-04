@@ -14,12 +14,57 @@
 - **言語**: TypeScript
 - **デプロイ**: Vercel
 
+## アーキテクチャ
+
+```mermaid
+graph TD
+    subgraph "ユーザー"
+        A[ブラウザ]
+    end
+
+    subgraph "フロントエンド (Vercel)"
+        B[Next.js (React)]
+        C[Material-UI]
+        D[Framer Motion]
+    end
+
+    subgraph "コンテンツ"
+        E[Markdownファイル (_contents)]
+    end
+
+    subgraph "外部サービス"
+        F[Resend (メール送信)]
+    end
+
+    A --> B
+    B --> C
+    B --> D
+    B --> E
+    B --> F
+```
+
 ## 主な機能
 
 - **トップページ**: 自己紹介、スキル、実績、アウトプット、お問い合わせフォームを掲載
 - **経歴ページ**: これまでの職務経歴を掲載
 - **レスポンシブデザイン**: PC、モバイルの両方で閲覧可能
 - **お問い合わせフォーム**: Resendを利用したメール送信機能
+
+## ディレクトリ構成
+
+```
+.
+├── _contents/         # マークダウンコンテンツ
+├── docs/              # 開発ドキュメント
+├── public/            # 静的アセット
+├── src/
+│   ├── app/           # App Router
+│   │   ├── api/       # APIルート
+│   │   └── (routes)/  # 各ページ
+│   └── components/    # 再利用可能なコンポーネント
+├── package.json
+└── README.md
+```
 
 ## 開発プロセス
 
@@ -49,6 +94,28 @@
 - `tasks.md`に記載する。
 - 実装の具体的な手順をリスト化する。
 - 実装計画をたてることで、AIに1タスクずつ着実に実装を進めてもらう。
+
+## ワークフロー
+
+```mermaid
+graph TD
+    A[開発者] -->|git push| B(GitHub)
+    B -->|Trigger| C(Vercel)
+    C -->|Build & Deploy| D(本番環境)
+
+    subgraph "Local"
+      A
+    end
+
+    subgraph "CI/CD"
+      B
+      C
+    end
+
+    subgraph "Hosting"
+      D
+    end
+```
 
 ## 実行方法
 
