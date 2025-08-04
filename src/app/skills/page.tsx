@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Typography, Box, Grid, Card, CardContent, Chip, Rating } from '@mui/material';
+import { motion } from 'framer-motion';
 import skillsData from '../../../_contents/skills.json';
+import { motion } from 'framer-motion';
 
 interface Skill {
   name: string;
@@ -50,37 +52,39 @@ const SkillsPage: React.FC = () => {
       <Grid container spacing={4}>
         {skills.map((category) => (
           <Grid item xs={12} md={6} key={category.category}>
-            <Card sx={{ height: '100%', borderRadius: 2, boxShadow: 3 }}>
-              <CardContent>
-                <Typography variant="h5" component="h2" gutterBottom align="center">
-                  {category.category}
-                </Typography>
-                <Box>
-                  {category.skills.map((skill) => (
-                    <Box key={skill.name} sx={{ mb: 2 }}>
-                      {category.category === '資格' ? (
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <Typography variant="body1" component="div">
-                            {skill.name}
-                          </Typography>
-                          {skill.date && <Chip label={skill.date} size="small" />}
-                        </Box>
-                      ) : (
-                        <>
+            <motion.div whileHover={{ y: -10 }}>
+              <Card sx={{ height: '100%', borderRadius: 2, boxShadow: 3 }}>
+                <CardContent>
+                  <Typography variant="h5" component="h2" gutterBottom align="center">
+                    {category.category}
+                  </Typography>
+                  <Box>
+                    {category.skills.map((skill) => (
+                      <Box key={skill.name} sx={{ mb: 2 }}>
+                        {category.category === '資格' ? (
                           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <Typography variant="body1" component="div">
                               {skill.name}
                             </Typography>
-                            {skill.years !== undefined && <Chip label={`${skill.years}年`} size="small" />}
+                            {skill.date && <Chip label={skill.date} size="small" />}
                           </Box>
-                          {skill.level !== undefined && <Rating name={skill.name} value={skill.level} readOnly max={5} />}
-                        </>
-                      )}
-                    </Box>
-                  ))}
-                </Box>
-              </CardContent>
-            </Card>
+                        ) : (
+                          <>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                              <Typography variant="body1" component="div">
+                                {skill.name}
+                              </Typography>
+                              {skill.years !== undefined && <Chip label={`${skill.years}年`} size="small" />}
+                            </Box>
+                            {skill.level !== undefined && <Rating name={skill.name} value={skill.level} readOnly max={5} />}
+                          </>
+                        )}
+                      </Box>
+                    ))}
+                  </Box>
+                </CardContent>
+              </Card>
+            </motion.div>
           </Grid>
         ))}
       </Grid>
