@@ -1,8 +1,8 @@
+'use client';
 import React from 'react';
 import { Container, Typography, Box, Grid, Card, CardContent, Chip, Rating } from '@mui/material';
 import { motion } from 'framer-motion';
 import skillsData from '../../../_contents/skills.json';
-import { motion } from 'framer-motion';
 
 interface Skill {
   name: string;
