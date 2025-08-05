@@ -63,20 +63,20 @@ const CareerModal: React.FC<CareerModalProps> = ({ career, onClose }) => {
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
-              p: ({node, ...props}) => <Typography variant="body2" {...props} sx={{ my: 1 }} />,
-              ul: ({node, ...props}) => <List dense {...props} />,
-              li: ({node, ...props}) => (
+              p: ({node, children}) => <Typography variant="body2" sx={{ my: 1 }}>{children}</Typography>,
+              ul: ({node, children}) => <List dense>{children}</List>,
+              li: ({node, children}) => (
                 <ListItem sx={{ py: 0, alignItems: 'flex-start' }}>
                   <ListItemIcon sx={{ minWidth: '24px', mt: '8px' }}>
                     <CircleIcon sx={{ fontSize: '8px', color: 'primary.main' }} />
                   </ListItemIcon>
                   <ListItemText
-                    primary={props.children}
+                    primary={children}
                     primaryTypographyProps={{ variant: 'body2' }}
                   />
                 </ListItem>
               ),
-              strong: ({node, ...props}) => <Typography component="span" fontWeight="bold" {...props} />,
+              strong: ({node, children}) => <Typography component="span" fontWeight="bold">{children}</Typography>,
             }}
           >
             {career.content}
