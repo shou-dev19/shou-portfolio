@@ -89,6 +89,8 @@
 - [x] 6. 1社目の2つ目のプロジェクト経歴を追加 (`_contents/career/2.md`)
 - [x] 7. 2社目の1つ目のプロジェクト経歴を追加 (`_contents/career/3.md`)
 - [x] 8. 2社目の2つ目のプロジェクト経歴を追加 (`_contents/career/4.md`)
+- [x] 9. 2社目の3つ目のプロジェクト経歴を追加 (`_contents/career/5.md`)
+- [x] 10. 2社目の4つ目のプロジェクト経歴を追加 (`_contents/career/6.md`)
 
 ## フェーズ8: さらなる改善
 
