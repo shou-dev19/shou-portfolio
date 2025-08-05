@@ -1,6 +1,8 @@
+'use client';
 import React from 'react';
-import { Modal, Box, Typography, IconButton } from '@mui/material';
+import { Modal, Box, Typography, IconButton, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import CircleIcon from '@mui/icons-material/Circle';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -58,7 +60,27 @@ const CareerModal: React.FC<CareerModalProps> = ({ career, onClose }) => {
           {career.period} - {career.position}
         </Typography>
         <Box id="modal-modal-description" sx={{ mt: 2, '& a': { color: 'primary.main' } }}>
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{career.content}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              p: ({node, ...props}) => <Typography variant="body2" {...props} sx={{ my: 1 }} />,
+              ul: ({node, ...props}) => <List dense {...props} />,
+              li: ({node, ...props}) => (
+                <ListItem sx={{ py: 0, alignItems: 'flex-start' }}>
+                  <ListItemIcon sx={{ minWidth: '24px', mt: '8px' }}>
+                    <CircleIcon sx={{ fontSize: '8px', color: 'primary.main' }} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={props.children}
+                    primaryTypographyProps={{ variant: 'body2' }}
+                  />
+                </ListItem>
+              ),
+              strong: ({node, ...props}) => <Typography component="span" fontWeight="bold" {...props} />,
+            }}
+          >
+            {career.content}
+          </ReactMarkdown>
         </Box>
       </Box>
     </Modal>
