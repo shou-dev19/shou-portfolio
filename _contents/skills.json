@@ -20,8 +20,7 @@
       { "name": "Express", "level": 4, "years": 1 },
       { "name": "Python", "level": 5, "years": 1.5 },
       { "name": "Java", "level": 4, "years": 2 },
-      { "name": "Spring Boot", "level": 4, "years": 0.5 },
-      { "name": "Struts", "level": 4, "years": 1.5 },
+      { "name": "Struts", "level": 4, "years": 2 },
       { "name": "PHP", "level": 5, "years": 1 },
       { "name": "Laravel", "level": 4, "years": 1 },
       { "name": "Django", "level": 4, "years": 0.1 },
@@ -31,10 +30,11 @@
   {
     "category": "Others",
     "skills": [
+      { "name": "AWS", "level": 5, "years": 3 },
       { "name": "Git", "level": 5, "years": 5 },
       { "name": "Docker", "level": 4, "years": 3 },
-      { "name": "Figma", "level": 4, "years": 0.5 },
-      { "name": "TensorFlow", "level": 4, "years": 0.5 },
+      { "name": "Figma", "level": 4, "years": 3 },
+      { "name": "TensorFlow", "level": 4, "years": 1 },
       { "name": "Jira/Confluence", "level": 5, "years": 3 },
       { "name": "Slack", "level": 5, "years": 3 }
     ]
