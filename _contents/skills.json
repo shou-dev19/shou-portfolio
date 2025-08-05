@@ -2,8 +2,8 @@
   {
     "category": "Frontend",
     "skills": [
-      { "name": "HTML", "level": 4, "years": 2 },
-      { "name": "CSS", "level": 4, "years": 2 },
+      { "name": "HTML", "level": 4, "years": 3 },
+      { "name": "CSS", "level": 4, "years": 3 },
       { "name": "JavaScript", "level": 5, "years": 2 },
       { "name": "TypeScript", "level": 5, "years": 2 },
       { "name": "React", "level": 5, "years": 1 },
@@ -19,8 +19,8 @@
       { "name": "Node.js", "level": 4, "years": 1 },
       { "name": "Express", "level": 4, "years": 1 },
       { "name": "Python", "level": 5, "years": 1.5 },
-      { "name": "Java", "level": 4, "years": 2 },
-      { "name": "Struts", "level": 4, "years": 2 },
+      { "name": "Java", "level": 4, "years": 3 },
+      { "name": "Struts", "level": 4, "years": 3 },
       { "name": "PHP", "level": 5, "years": 1 },
       { "name": "Laravel", "level": 4, "years": 1 },
       { "name": "Django", "level": 4, "years": 0.1 },
