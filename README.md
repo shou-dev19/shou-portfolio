@@ -23,7 +23,7 @@ graph TD
     end
 
     subgraph "フロントエンド (Vercel)"
-        B[Next.js (React)]
+        B["Next.js (React)"]
         C[Material-UI]
         D[Framer Motion]
     end
