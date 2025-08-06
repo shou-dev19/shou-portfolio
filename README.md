@@ -29,11 +29,11 @@ graph TD
     end
 
     subgraph "コンテンツ"
-        E[Markdownファイル (_contents)]
+        E["Markdownファイル (_contents)"]
     end
 
     subgraph "外部サービス"
-        F[Resend (メール送信)]
+        F["Resend (メール送信)"]
     end
 
     A --> B
