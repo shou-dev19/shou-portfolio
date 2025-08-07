@@ -5,12 +5,15 @@ image: "/portfolio/poke-type-quiz_image.png"
 description: "React, TypeScript, Viteを採用し、品質保証とCI/CDの自動化に注力したインタラクティブなクイズアプリ。Framer Motionによるアニメーションも特徴です。"
 github: "https://github.com/shou-dev19/poke-type-quiz"
 demo: "https://poke-type-quiz.vercel.app"
+architectureImage: "/portfolio/poke-quiz/poke_quiz_arch.png"
+deployFlowImage: "/portfolio/poke-quiz/poke_quiz_cicd.png"
 ---
 
 ## 概要
 
 ポケモンのタイプ相性を楽しく学べる、インタラクティブなクイズアプリケーションです。
 「かんたん」「ふつう」「むずかしい」の3段階の難易度を選択でき、リアルタイムのアニメーションや視覚的なエフェクトで学習をサポートします。
+妻がポケモンのタイプ相性をなかなか覚えてくれないので、暇なときに勉強してもらおうと思い作成しました。
 
 ## アピールポイント
 

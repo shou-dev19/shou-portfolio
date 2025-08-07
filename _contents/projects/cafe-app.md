@@ -2,12 +2,11 @@
 title: "Flutter Cafe App"
 date: "2024-07-25"
 image: "/portfolio/flutter-cafe-app_image.png"
-description: "FlutterとAWSサーバーレスアーキテクチャで構築したサンプルカフェアプリです。
+description: "FlutterとAWSサーバーレスアーキテクチャで構築したサンプルカフェアプリです。"
 github: "https://github.com/shou-dev19/flutter-cafe-app-ai"
 demo: "https://d2nh2abk1vdbtw.cloudfront.net"
-architectureImage: /cafe-app/aws_user_flow.png"
-deployFlowImage: "/cafe-app/ci_cd_workflow.png"
-"
+architectureImage: "/portfolio/cafe-app/aws_user_flow.png"
+deployFlowImage: "/portfolio/cafe-app/ci_cd_workflow.png"
 ---
 # Flutter Cafe App - ポートフォリオ
 
@@ -38,8 +37,7 @@ deployFlowImage: "/cafe-app/ci_cd_workflow.png"
 ## 3. システムアーキテクチャ
 
 このアプリケーションは、スケーラビリティ、パフォーマンス、コスト効率を重視して設計されたAWSのサーバーレスアーキテクチャ上でホスティングされています。
-
-![AWS Architecture](https://github.com/shou-dev19/flutter-cafe-app-ai/blob/main/docs/AWS_ARCHITECTURE.md)
+右記のアーキテクチャ図か[AWS_ARCHITECTURE.md](https://github.com/shou-dev19/flutter-cafe-app-ai/blob/main/docs/AWS_ARCHITECTURE.md)を参照してください。
 
 ### CI/CDパイプライン
 
