@@ -12,6 +12,10 @@ interface ProjectData {
   image: string;
   description: string;
   content: string;
+  github?: string;
+  demo?: string;
+  architectureImage?: string;
+  deployFlowImage?: string;
 }
 
 interface ProjectListClientProps {

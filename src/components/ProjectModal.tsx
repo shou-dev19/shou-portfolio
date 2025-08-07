@@ -13,6 +13,8 @@ interface ProjectModalProps {
     github?: string;
     demo?: string;
     image?: string;
+    architectureImage?: string;
+    deployFlowImage?: string;
   };
   onClose: () => void;
 }
@@ -101,6 +103,47 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                   objectFit: 'cover',
                 }}
               />
+            )}
+            {(project.architectureImage || project.deployFlowImage) && (
+              <Box sx={{ mt: 3 }}>
+                {project.architectureImage && (
+                  <>
+                    <Typography variant="h6" gutterBottom>
+                      システムアーキテクチャ
+                    </Typography>
+                    <Box
+                      component="img"
+                      src={project.architectureImage}
+                      alt="システムアーキテクチャ図"
+                      sx={{
+                        width: '100%',
+                        height: 'auto',
+                        borderRadius: 2,
+                        objectFit: 'cover',
+                        mb: 3,
+                      }}
+                    />
+                  </>
+                )}
+                {project.deployFlowImage && (
+                  <>
+                    <Typography variant="h6" gutterBottom>
+                      CI/CDワークフロー
+                    </Typography>
+                    <Box
+                      component="img"
+                      src={project.deployFlowImage}
+                      alt="CI/CDワークフロー図"
+                      sx={{
+                        width: '100%',
+                        height: 'auto',
+                        borderRadius: 2,
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </>
+                )}
+              </Box>
             )}
           </Grid>
         </Grid>
