@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, IconButton } from '@mui/material';
-import { GitHub, Twitter } from '@mui/icons-material';
+import { GitHub, X } from '@mui/icons-material';
 
 const Footer: React.FC = () => {
   return (
@@ -25,13 +25,13 @@ const Footer: React.FC = () => {
           <GitHub />
         </IconButton>
         <IconButton
-          aria-label="Twitter"
+          aria-label="X"
           component="a"
-          href="https://twitter.com/your-account"
+          href="https://x.com/shou_dev"
           target="_blank"
           sx={{ color: 'white' }}
         >
-          <Twitter />
+          <X />
         </IconButton>
         {/* 他に追加したいソーシャルリンクがあればここに追加 */}
       </Box>
