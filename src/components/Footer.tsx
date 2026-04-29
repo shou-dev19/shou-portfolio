@@ -1,6 +1,12 @@
 import React from 'react';
-import { Box, Typography, IconButton } from '@mui/material';
-import { GitHub, X } from '@mui/icons-material';
+import { Box, Typography, IconButton, SvgIcon } from '@mui/material';
+import { GitHub, X, YouTube } from '@mui/icons-material';
+
+const NoteIcon: React.FC = () => (
+  <SvgIcon viewBox="0 0 24 24">
+    <path d="M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h12v2H3v-2zm0 4h8v2H3v-2z" />
+  </SvgIcon>
+);
 
 const Footer: React.FC = () => {
   return (
@@ -33,10 +39,30 @@ const Footer: React.FC = () => {
         >
           <X />
         </IconButton>
-        {/* 他に追加したいソーシャルリンクがあればここに追加 */}
+        <IconButton
+          aria-label="YouTube"
+          component="a"
+          href="https://www.youtube.com/@KakuyasuSimZukan"
+          target="_blank"
+          sx={{ color: 'white' }}
+        >
+          <YouTube />
+        </IconButton>
+        <IconButton
+          aria-label="note"
+          component="a"
+          href="https://note.com/shou_devlog"
+          target="_blank"
+          sx={{ color: 'white' }}
+        >
+          <NoteIcon />
+        </IconButton>
       </Box>
-      <Typography variant="body2">
-        &copy; {new Date().getFullYear()} SHOU&apos;s Portfolio. All Rights Reserved.
+      <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 0.5 }}>
+        UDKアセットデザイン
+      </Typography>
+      <Typography variant="body2" sx={{ opacity: 0.75 }}>
+        &copy; {new Date().getFullYear()} SHOU. All Rights Reserved.
       </Typography>
     </Box>
   );

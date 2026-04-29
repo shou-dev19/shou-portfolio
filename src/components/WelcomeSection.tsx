@@ -27,11 +27,14 @@ const WelcomeSection = () => {
         p: 4,
       }}
     >
-      <Typography variant="h3" component="h1" gutterBottom>
-        SHOUのポートフォリオへようこそ
+      <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
+        UDKアセットデザイン
       </Typography>
-      <Typography variant="h6" component="p" sx={{ mb: 4 }}>
-        これまでの経験とスキル、そして情熱をご覧ください。
+      <Typography variant="h5" component="p" sx={{ mb: 2, fontWeight: 500 }}>
+        SHOU — ITエンジニア × 資産形成
+      </Typography>
+      <Typography variant="h6" component="p" sx={{ mb: 4, opacity: 0.9 }}>
+        AIを活用した YouTube・ブログ・note の運営で、資産形成を加速させます。
       </Typography>
       <Box>
         <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('profile')} sx={{ m: 1 }}>

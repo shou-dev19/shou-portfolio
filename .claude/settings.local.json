@@ -4,8 +4,19 @@
       "Bash(npm run dev:*)",
       "Bash(curl:*)",
       "Bash(mmdc:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(npx next *)",
+      "Bash(wait)",
+      "Bash(npx tsc *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d.get\\('packages',{}\\).get\\('node_modules/framer-motion',{}\\).get\\('version','not found'\\)\\)\")",
+      "Bash(echo \"Dev server PID: $!\")",
+      "Read(//tmp/**)",
+      "Bash(python3 -c ' *)"
     ],
     "deny": []
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "github-mcp-server"
+  ]
 }

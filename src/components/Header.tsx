@@ -116,8 +116,11 @@ const Header: React.FC = () => {
       <AppBar position="sticky">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Button component={Link} href="/" sx={{ color: 'white', fontSize: '1.25rem' }}>
-              SHOU&apos;s Portfolio
+            <Button component={Link} href="/" sx={{ color: 'white', fontSize: '1.1rem', textAlign: 'left', lineHeight: 1.2 }}>
+              <Box component="span" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                <Box component="span" sx={{ fontWeight: 'bold', fontSize: '1rem' }}>UDKアセットデザイン</Box>
+                <Box component="span" sx={{ fontSize: '0.7rem', opacity: 0.8 }}>SHOU&apos;s Portfolio</Box>
+              </Box>
             </Button>
           </Typography>
           {isMobile ? (
