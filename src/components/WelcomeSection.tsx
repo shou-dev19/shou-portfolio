@@ -40,6 +40,9 @@ const WelcomeSection = () => {
         <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('profile')} sx={{ m: 1 }}>
           Profile
         </Button>
+        <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('outputs')} sx={{ m: 1 }}>
+          Outputs
+        </Button>
         <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('skills')} sx={{ m: 1 }}>
           Skills
         </Button>
@@ -48,9 +51,6 @@ const WelcomeSection = () => {
         </Button>
         <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('career')} sx={{ m: 1 }}>
           Career
-        </Button>
-        <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('outputs')} sx={{ m: 1 }}>
-          Outputs
         </Button>
         <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('contact')} sx={{ m: 1 }}>
           Contact

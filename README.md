@@ -34,6 +34,7 @@ graph TD
 
     subgraph "外部サービス"
         F["Resend (メール送信)"]
+        G["YouTube RSS Feed"]
     end
 
     A --> B
@@ -41,6 +42,7 @@ graph TD
     B --> D
     B --> E
     B --> F
+    G -->|ビルド時に取得| B
 ```
 
 ## 主な機能
@@ -49,11 +51,15 @@ graph TD
 - **経歴ページ**: これまでの職務経歴を掲載
 - **レスポンシブデザイン**: PC、モバイルの両方で閲覧可能
 - **お問い合わせフォーム**: Resendを利用したメール送信機能
+- **YouTube最新動画表示**: ビルド時にYouTube RSSフィードを取得し、最新4本の動画サムネイルを自動表示（ISR 24時間）
 
 ## ディレクトリ構成
 
 ```
 .
+├── .github/
+│   └── workflows/
+│       └── weekly-rebuild.yml  # 毎週水曜日の定期Vercelビルド
 ├── _contents/         # マークダウンコンテンツ
 ├── docs/              # 開発ドキュメント
 ├── public/            # 静的アセット
@@ -61,7 +67,9 @@ graph TD
 │   ├── app/           # App Router
 │   │   ├── api/       # APIルート
 │   │   └── (routes)/  # 各ページ
-│   └── components/    # 再利用可能なコンポーネント
+│   ├── components/    # 再利用可能なコンポーネント
+│   └── lib/
+│       └── youtube.ts # YouTube RSSフィード取得ユーティリティ
 ├── package.json
 └── README.md
 ```
@@ -102,6 +110,8 @@ graph TD
     A[開発者] -->|git push| B(GitHub)
     B -->|Trigger| C(Vercel)
     C -->|Build & Deploy| D(本番環境)
+    E["GitHub Actions\n(毎週水曜 19:00 JST)"] -->|Deploy Hook| C
+    C -->|YouTube RSS取得| F[YouTube]
 
     subgraph "Local"
       A
@@ -110,12 +120,26 @@ graph TD
     subgraph "CI/CD"
       B
       C
+      E
     end
 
     subgraph "Hosting"
       D
     end
+
+    subgraph "外部サービス"
+      F
+    end
 ```
+
+### 定期ビルド（YouTube最新動画更新）
+
+毎週水曜日 19:00 JST に GitHub Actions がVercelのDeploy Hookを呼び出し、サイトを自動リビルドします。
+リビルド時にYouTube RSSフィードから最新動画を取得し直すことで、Outputsページの動画一覧が常に最新の状態を保ちます。
+
+**設定方法**（初回のみ）:
+1. Vercelダッシュボード → Settings → Git → Deploy Hooks でフック URLを発行
+2. GitHubリポジトリ → Settings → Secrets → `VERCEL_DEPLOY_HOOK_URL` に登録
 
 ## 実行方法
 

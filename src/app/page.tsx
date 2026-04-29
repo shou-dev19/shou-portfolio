@@ -1,5 +1,7 @@
 import React from 'react';
 import fs from 'fs/promises';
+
+export const revalidate = 86400;
 import path from 'path';
 import HomePageClient from '../components/HomePageClient';
 import SkillsPage from './skills/page';

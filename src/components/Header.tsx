@@ -44,10 +44,10 @@ const Header: React.FC = () => {
   const menuItems = [
     { text: 'Welcome', href: '/', icon: <HomeIcon /> },
     { text: 'Profile', href: '/#profile', icon: <PersonIcon /> },
+    { text: 'Outputs', href: '/#outputs', icon: <ArticleIcon /> },
     { text: 'Skills', href: '/#skills', icon: <BuildIcon /> },
     { text: 'Projects', href: '/#projects', icon: <WorkIcon /> },
     { text: 'Career', href: '/#career', icon: <BusinessCenterIcon /> },
-    { text: 'Outputs', href: '/#outputs', icon: <ArticleIcon /> },
     { text: 'Contact', href: '/#contact', icon: <MailIcon /> },
   ];
 

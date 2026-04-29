@@ -1,0 +1,14 @@
+name: Weekly Vercel Rebuild
+
+on:
+  schedule:
+    # 毎週水曜日 JST 19:00 (UTC 10:00) に実行
+    - cron: '0 10 * * 3'
+  workflow_dispatch: # 手動実行も可能
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        run: curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"

@@ -19,10 +19,10 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ markdown, skills, proje
     <Box>
       <WelcomeSection />
       <ProfileSection markdown={markdown} />
+      <Section id="outputs">{outputs}</Section>
       <Section id="skills">{skills}</Section>
       <Section id="projects">{projects}</Section>
       <Section id="career">{career}</Section>
-      <Section id="outputs">{outputs}</Section>
       <Section id="contact">{contact}</Section>
     </Box>
   );

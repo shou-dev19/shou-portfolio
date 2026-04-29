@@ -1,6 +1,10 @@
 import React from 'react';
-import { Box, Typography, Grid, Card, CardContent, Link, SvgIcon } from '@mui/material';
-import { GitHub, RssFeed, Article, YouTube } from '@mui/icons-material';
+import Image from 'next/image';
+import { Box, Typography, Grid, Card, Link, SvgIcon, Divider } from '@mui/material';
+import { GitHub, RssFeed, Article, YouTube, PlayArrow } from '@mui/icons-material';
+import { getLatestVideos } from '@/lib/youtube';
+
+export const revalidate = 86400;
 
 const NoteIcon: React.FC = () => (
   <SvgIcon viewBox="0 0 24 24" fontSize="large">
@@ -8,82 +12,206 @@ const NoteIcon: React.FC = () => (
   </SvgIcon>
 );
 
-const outputs = [
-  {
-    title: 'YouTube',
-    url: 'https://www.youtube.com/@KakuyasuSimZukan',
-    description: 'AIを活用した格安SIM・節約術の動画を配信。メインの収益事業として運営中です。',
-    icon: <YouTube fontSize="large" />,
-    highlight: true,
-  },
+const otherPlatforms = [
   {
     title: 'Blog',
     url: 'https://setsuyaku-engineer.com/',
-    description: 'AIを活用して運営する節約・資産形成ブログ。YouTube連動でさらに情報を深掘りしています。',
+    description: 'YouTube連動の節約・資産形成ブログ。AIを活用して運営中。',
     icon: <RssFeed fontSize="large" />,
-    highlight: true,
   },
   {
     title: 'note',
     url: 'https://note.com/shou_devlog',
-    description: 'ITエンジニアとしての知見や、個人事業主としてのリアルな経験を発信しています。',
+    description: 'ITエンジニア・個人事業主としての知見を発信。',
     icon: <NoteIcon />,
-    highlight: true,
   },
   {
     title: 'Qiita',
     url: 'https://qiita.com/shou-dev19',
-    description: 'エンジニア向けに技術的な知見を共有しています。',
+    description: 'エンジニア向けの技術記事を共有しています。',
     icon: <Article fontSize="large" />,
-    highlight: false,
   },
   {
     title: 'GitHub',
     url: 'https://github.com/shou-dev19',
-    description: '公開しているプロジェクトやコードを閲覧できます。',
+    description: 'OSSプロジェクトやコードを公開しています。',
     icon: <GitHub fontSize="large" />,
-    highlight: false,
   },
 ];
 
-const OutputsPage: React.FC = () => {
+const OutputsPage: React.FC = async () => {
+  const videos = await getLatestVideos(4);
+
   return (
     <Box sx={{ py: 4, px: { xs: 2, md: 8 } }}>
       <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4, color: 'white' }}>
         Outputs
       </Typography>
-      <Grid container spacing={4} justifyContent="center">
-        {outputs.map((output) => (
-          <Grid item xs={12} sm={6} md={4} key={output.title}>
-            <Link href={output.url} target="_blank" rel="noopener noreferrer" sx={{ textDecoration: 'none' }}>
+
+      {/* YouTube Hero */}
+      <Box
+        sx={{
+          mb: 6,
+          p: { xs: 2, md: 4 },
+          borderRadius: 2,
+          backgroundColor: 'rgba(0,0,0,0.55)',
+          border: '1px solid rgba(255,0,0,0.4)',
+        }}
+      >
+        {/* Channel header */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: 2,
+            mb: 3,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <YouTube sx={{ fontSize: { xs: 40, md: 52 }, color: '#FF0000' }} />
+            <Box>
+              <Typography variant="h5" sx={{ color: 'white', fontWeight: 'bold', lineHeight: 1.2 }}>
+                格安SIM図鑑【スマホ攻略チャンネル】
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.65)', mt: 0.5 }}>
+                格安SIM・節約術・スマホ攻略を毎週配信中
+              </Typography>
+            </Box>
+          </Box>
+          <Link
+            href="https://www.youtube.com/@KakuyasuSimZukan"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 1,
+              px: 3,
+              py: 1.2,
+              backgroundColor: '#FF0000',
+              color: 'white',
+              borderRadius: 1,
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              fontSize: '0.9rem',
+              transition: 'background-color 0.2s',
+              '&:hover': { backgroundColor: '#cc0000' },
+            }}
+          >
+            <YouTube fontSize="small" />
+            チャンネルを見る
+          </Link>
+        </Box>
+
+        {/* Latest videos */}
+        {videos.length > 0 && (
+          <>
+            <Typography variant="overline" sx={{ color: 'rgba(255,255,255,0.5)', letterSpacing: 2 }}>
+              最新動画
+            </Typography>
+            <Grid container spacing={2} sx={{ mt: 0.5 }}>
+              {videos.map((video) => (
+                <Grid item xs={12} sm={6} md={3} key={video.videoId}>
+                  <Link
+                    href={video.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ textDecoration: 'none' }}
+                  >
+                    <Card
+                      sx={{
+                        backgroundColor: 'rgba(20,20,20,0.8)',
+                        color: 'white',
+                        height: '100%',
+                        transition: 'transform 0.2s, box-shadow 0.2s',
+                        '&:hover': { transform: 'translateY(-4px)', boxShadow: 6 },
+                      }}
+                    >
+                      {/* Thumbnail 16:9 */}
+                      <Box sx={{ position: 'relative', paddingTop: '56.25%' }}>
+                        <Image
+                          src={video.thumbnailUrl}
+                          alt={video.title}
+                          fill
+                          sizes="(max-width:600px) 100vw, (max-width:900px) 50vw, 25vw"
+                          style={{ objectFit: 'cover' }}
+                        />
+                        <Box
+                          sx={{
+                            position: 'absolute',
+                            bottom: 6,
+                            right: 6,
+                            bgcolor: 'rgba(0,0,0,0.75)',
+                            borderRadius: '50%',
+                            width: 28,
+                            height: 28,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          <PlayArrow sx={{ fontSize: 16, color: 'white' }} />
+                        </Box>
+                      </Box>
+                      {/* Info */}
+                      <Box sx={{ p: 1.5 }}>
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            color: 'white',
+                            fontWeight: 'bold',
+                            display: '-webkit-box',
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: 'vertical',
+                            overflow: 'hidden',
+                            lineHeight: 1.45,
+                            mb: 0.5,
+                          }}
+                        >
+                          {video.title}
+                        </Typography>
+                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.65rem' }}>
+                          {new Date(video.publishedAt).toLocaleDateString('ja-JP')}
+                        </Typography>
+                      </Box>
+                    </Card>
+                  </Link>
+                </Grid>
+              ))}
+            </Grid>
+          </>
+        )}
+      </Box>
+
+      <Divider sx={{ mb: 4, borderColor: 'rgba(255,255,255,0.15)' }} />
+
+      {/* Other platforms */}
+      <Typography variant="h6" sx={{ color: 'rgba(255,255,255,0.75)', mb: 3, textAlign: 'center' }}>
+        その他のアウトプット
+      </Typography>
+      <Grid container spacing={3} justifyContent="center">
+        {otherPlatforms.map((platform) => (
+          <Grid item xs={12} sm={6} md={3} key={platform.title}>
+            <Link href={platform.url} target="_blank" rel="noopener noreferrer" sx={{ textDecoration: 'none' }}>
               <Card
                 sx={{
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'center',
                   alignItems: 'center',
                   p: 3,
-                  border: output.highlight ? '2px solid' : '1px solid',
-                  borderColor: output.highlight ? 'primary.main' : 'divider',
-                  transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'translateY(-10px)',
-                    boxShadow: 6,
-                  },
+                  transition: 'transform 0.3s, box-shadow 0.3s',
+                  '&:hover': { transform: 'translateY(-8px)', boxShadow: 6 },
                 }}
               >
-                <Box sx={{ mb: 2, color: 'primary.main' }}>{output.icon}</Box>
-                <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: output.highlight ? 'bold' : 'normal' }}>
-                  {output.title}
+                <Box sx={{ mb: 2, color: 'primary.main' }}>{platform.icon}</Box>
+                <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
+                  {platform.title}
                 </Typography>
-                {output.highlight && (
-                  <Typography variant="caption" sx={{ mb: 1, color: 'primary.main', fontWeight: 'bold' }}>
-                    メイン事業
-                  </Typography>
-                )}
-                <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
-                  {output.description}
+                <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', fontSize: '0.8rem' }}>
+                  {platform.description}
                 </Typography>
               </Card>
             </Link>

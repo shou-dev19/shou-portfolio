@@ -2,6 +2,14 @@
 const nextConfig = {
   basePath: '/portfolio',
   transpilePackages: ['framer-motion'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.ytimg.com',
+      },
+    ],
+  },
   async redirects() {
     return [
       {

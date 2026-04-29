@@ -16,13 +16,17 @@
     - **`/api`**: APIルートのエンドポイントが定義されています。
     - **`/career`**: 経歴ページのコンポーネントです。
     - **`/contact`**: お問い合わせフォームのコンポーネントです。
-    - **`/outputs`**: 成果物一覧ページのコンポーネントです。
+    - **`/outputs`**: 成果物一覧ページです。YouTubeの最新動画をRSSフィードから取得して表示します（ISR 24時間）。
     - **`/projects`**: プロジェクト詳細ページのコンポーネントです。
     - **`/skills`**: スキル一覧ページのコンポーネントです。
   - **`/src/components`**: アプリケーション全体で再利用されるUIコンポーネント（ヘッダー、フッターなど）が格納されています。
+  - **`/src/lib`**: ユーティリティ関数が格納されています。
+    - **`youtube.ts`**: YouTube RSSフィードから最新動画を取得するユーティリティです。チャンネルID `UCMipk_M3zSM9hx6V2wFBIWg` を使用します。
 - **`/_contents`**: マークダウン形式のコンテンツファイルが格納されています。
   - **`/career`**: 経歴に関するマークダウンファイルです。
   - **`/projects`**: プロジェクトに関するマークダウンファイルです。
+- **`/.github/workflows`**: GitHub Actionsのワークフローが格納されています。
+  - **`weekly-rebuild.yml`**: 毎週水曜日 19:00 JST にVercelのDeploy Hookを呼び出し、サイトを自動リビルドします。リビルド時にYouTube最新動画が更新されます。Deploy Hook URLはGitHubシークレット `VERCEL_DEPLOY_HOOK_URL` に設定が必要です。
 - **`/docs`**: プロジェクトの開発関連ドキュメントが格納されています。
   - `requirements.md`: 要件定義書
   - `design.md`: 設計書

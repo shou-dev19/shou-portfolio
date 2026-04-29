@@ -39,6 +39,7 @@ src/
 ├── app/                    # Next.js App Router pages
 │   ├── api/contact/        # Contact form API endpoint
 │   ├── contact/            # Contact page
+│   ├── outputs/            # Outputs page (YouTube + other platforms)
 │   ├── projects/           # Projects listing and detail pages
 │   └── skills/             # Skills page
 ├── components/             # Reusable UI components
@@ -48,6 +49,8 @@ src/
 │   ├── MotionProvider.tsx  # Framer Motion wrapper
 │   ├── ProjectModal.tsx    # Project detail modal
 │   └── *Client.tsx         # Client-side components
+├── lib/
+│   └── youtube.ts          # YouTube RSS fetch utility
 └── theme.ts               # MUI theme configuration
 ```
 
@@ -73,5 +76,13 @@ src/
 - All styling uses MUI components with custom theme configuration
 - TypeScript strict mode enabled with path aliases (`@/*` -> `./src/*`)
 
+### YouTube Integration
+- `src/lib/youtube.ts` fetches the latest videos from the YouTube RSS feed at build time
+- Channel ID: `UCMipk_M3zSM9hx6V2wFBIWg` (格安SIM図鑑【スマホ攻略チャンネル】)
+- RSS URL: `https://www.youtube.com/feeds/videos.xml?channel_id=UCMipk_M3zSM9hx6V2wFBIWg`
+- `src/app/outputs/page.tsx` and `src/app/page.tsx` both export `revalidate = 86400` (ISR, 24h)
+- `.github/workflows/weekly-rebuild.yml` triggers a Vercel rebuild every Wednesday at 19:00 JST via Deploy Hook
+- The Deploy Hook URL must be set as `VERCEL_DEPLOY_HOOK_URL` in GitHub repository secrets
+
 ### Japanese Context
-This is a Japanese developer's portfolio (SHOU), with some content in Japanese. The design incorporates Yokohama/Pokemon themes as personal touches while maintaining professional presentation.
+This is a Japanese individual business owner's portfolio (SHOU / UDKアセットデザイン), with content in Japanese. YouTube is the primary business activity; the site is designed to highlight YouTube content over engineering background.
