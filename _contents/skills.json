@@ -40,6 +40,24 @@
     ]
   },
   {
+    "category": "コンテンツ制作",
+    "skills": [
+      { "name": "YouTube動画企画・制作", "level": 5, "years": 1 },
+      { "name": "動画編集（Remotion）", "level": 5, "years": 1 },
+      { "name": "動画編集（CapCut）", "level": 4, "years": 1 },
+      { "name": "サムネイル自動生成（Gemini API）", "level": 5, "years": 1 },
+      { "name": "YouTube SEO", "level": 5, "years": 1 }
+    ]
+  },
+  {
+    "category": "ライティング・情報発信",
+    "skills": [
+      { "name": "テクニカルライティング（Qiita）", "level": 4, "years": 2 },
+      { "name": "ブログ・note執筆", "level": 5, "years": 2 },
+      { "name": "X（旧Twitter）発信", "level": 4, "years": 2 }
+    ]
+  },
+  {
     "category": "資格",
     "skills": [
       { "name": "Registered Scrum Master (RSM)", "date": "2023/06/29" },
