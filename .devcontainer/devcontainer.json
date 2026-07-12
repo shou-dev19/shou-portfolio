@@ -1,6 +1,10 @@
 {
     "name": "Claude & Gemini & TypeScript Dev",
     "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bookworm",
+    // 認証情報を含む設定ファイル (.claude.json) をボリューム内に置き、リビルド後も認証を維持する
+    "containerEnv": {
+        "CLAUDE_CONFIG_DIR": "/home/node/.claude"
+    },
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/github-cli:1": {},
@@ -15,6 +19,11 @@
         {
             "source": "gemini-config",
             "target": "/home/node/.gemini",
+            "type": "volume"
+        },
+        {
+            "source": "codex-config",
+            "target": "/home/node/.codex",
             "type": "volume"
         },
         {
