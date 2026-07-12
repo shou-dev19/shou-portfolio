@@ -10,7 +10,7 @@
       { "name": "Next.js", "level": 4, "years": 0.1 },
       { "name": "Angular", "level": 4, "years": 0.5 },
       { "name": "Dart", "level": 5, "years": 3 },
-      { "name": "Flutter", "level": 5, "years": 3 }
+      { "name": "Flutter", "level": 5, "years": 3, "featured": true }
     ]
   },
   {
@@ -30,7 +30,7 @@
   {
     "category": "Others",
     "skills": [
-      { "name": "AWS", "level": 5, "years": 3 },
+      { "name": "AWS", "level": 5, "years": 3, "featured": true },
       { "name": "Git", "level": 5, "years": 5 },
       { "name": "Docker", "level": 4, "years": 3 },
       { "name": "Figma", "level": 4, "years": 3 },
@@ -42,10 +42,10 @@
   {
     "category": "コンテンツ制作",
     "skills": [
-      { "name": "YouTube動画企画・制作", "level": 5, "years": 1 },
-      { "name": "動画編集（Remotion）", "level": 5, "years": 1 },
+      { "name": "YouTube動画企画・制作", "level": 5, "years": 1, "featured": true },
+      { "name": "動画編集（Remotion）", "level": 5, "years": 1, "featured": true },
       { "name": "動画編集（CapCut）", "level": 4, "years": 1 },
-      { "name": "サムネイル自動生成（Gemini API）", "level": 5, "years": 1 },
+      { "name": "サムネイル自動生成（Gemini API）", "level": 5, "years": 1, "featured": true },
       { "name": "YouTube SEO", "level": 5, "years": 1 }
     ]
   },
@@ -60,10 +60,10 @@
   {
     "category": "資格",
     "skills": [
-      { "name": "Registered Scrum Master (RSM)", "date": "2023/06/29" },
       { "name": "AWS Certified Solutions Architect - Associate (SAA)", "date": "2025/06/16" },
-      { "name": "基本情報技術者試験", "date": "2016/10/16" },
-      { "name": "３級ファイナンシャル・プランニング技能士　個人資産相談業務", "date": "2025/02/14" }
+      { "name": "３級ファイナンシャル・プランニング技能士　個人資産相談業務", "date": "2025/02/14" },
+      { "name": "Registered Scrum Master (RSM)", "date": "2023/06/29" },
+      { "name": "基本情報技術者試験", "date": "2016/10/16" }
     ]
   }
 ]

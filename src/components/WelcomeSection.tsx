@@ -70,7 +70,13 @@ const WelcomeSection = () => {
             gap: 2,
           }}
         >
-          <Button variant="contained" color="primary" size="large" onClick={() => scrollToSection('contact')}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={() => scrollToSection('contact')}
+            sx={{ textTransform: 'none' }}
+          >
             お仕事のご相談
           </Button>
           <Button
@@ -81,6 +87,7 @@ const WelcomeSection = () => {
             rel="noopener noreferrer"
             startIcon={<YouTubeIcon />}
             sx={{
+              textTransform: 'none',
               color: 'white',
               borderColor: 'white',
               '&:hover': {
