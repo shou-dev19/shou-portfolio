@@ -101,3 +101,53 @@
 
 - [x] 1. `poke-type-quiz` のプロジェクト情報を `_contents/projects/` に追加する
 - [ ] 2. `poke-type-quiz` のプロジェクト画像を `public/` に追加する
+
+---
+
+以下のフェーズ10〜12は `docs/improvement-proposal.md`(2026-07-12の改善提案)に基づくタスク。
+各タスクの `[A-1]` 等は提案書内の項目番号を指す。**(要ヒアリング)** はSHOUからの情報提供・判断が必要なタスク。
+
+## フェーズ10: 改善提案 優先度1(即効性が高い)
+
+前提決定事項(2026-07-12 ヒアリング):
+- キャッチコピーのターゲットは**「仕事の依頼主」**。受注したい領域は ①AIを活用した業務効率化 ②YouTube動画編集(Remotion等) ③FP・副業の知見を活かした資産形成支援 の3本柱
+- YouTubeの実績数字は **YouTube Data API v3 で自動取得**する(既存のISR: `revalidate = 86400` + 週次リビルドに乗せる)。APIキーはローカル `.env` に設定済み
+- ブログはGA4導入済みのため、ブログPVも **GA4 Data API で自動取得**する
+- 実装はcodex CLIに委譲し、Claudeが指示・レビューを行う(`CLAUDE.md` 参照)
+
+- [ ] 1. [A-2] YouTubeチャンネル実績(登録者数・動画本数・総再生回数)を YouTube Data API v3(`channels.list` / part=statistics)で自動取得する関数を `src/lib/youtube.ts` に追加する(キー未設定時は実績非表示でビルドが通るようフォールバックを実装)
+- [x] 2. [A-2] Vercelの環境変数に `YOUTUBE_API_KEY` を設定する(ローカル `.env` は設定済みだがgitignore対象のため、Vercel側には別途設定が必要) **(要作業: SHOU)**
+- [x] 3. [A-2] GA4連携の準備: Google Cloudでサービスアカウントを作成し、ブログのGA4プロパティに「閲覧者」権限を付与。プロパティIDと認証情報をローカル `.env` とVercelの環境変数に設定する **(要作業: SHOU、手順はClaudeが案内)**
+- [ ] 4. [A-2] GA4 Data API でブログの月間PVを取得する処理を実装する(未設定時はブログPV非表示のフォールバック付き)
+- [ ] 5. [A-2] 実績バッジコンポーネント(登録者数・動画本数・総再生回数・ブログ月間PV・収益化達成)を作成し、ヒーロー直下と `Outputs` セクションに表示する
+- [ ] 6. [A-1] キャッチコピーを「仕事の依頼主」向けに見直す。3本柱(AI業務効率化 / Remotion動画制作 / 資産形成支援)を頼めることが一目で分かる文言にする(`src/components/WelcomeSection.tsx`) **(要レビュー: 文言はSHOUと調整)**
+- [ ] 7. [A-4] ヒーローのボタン6個を整理する。主CTA=「お仕事のご相談(Contact)」、セカンダリ=「YouTubeを見る」とし、その他のナビはヘッダーに任せる
+- [ ] 8. [C-10] OGP用画像(1200×630)を作成し `public/` に配置する
+- [ ] 9. [C-9, C-10] `src/app/layout.tsx` のmetadataを修正する(title/descriptionの日本語化、OGP URLを `www.shou-devlog.com` に変更、OGP画像の差し替え)
+- [ ] 10. X等でシェアした際のOGP表示を実機確認する
+
+## フェーズ11: 改善提案 優先度2(中期)
+
+- [ ] 1. [A-3] AI動画制作パイプライン(Remotion動画制作・Gemini APIサムネイル自動生成)のプロジェクト記事を `_contents/projects/` に作成する **(要ヒアリング: 構成・実績詳細)**
+- [ ] 2. [A-3] パイプラインの構成図・スクリーンショット画像を `public/` に追加する
+- [ ] 3. [A-5] `_contents/skills.json` のレベルを経験年数と整合するよう見直す **(要ヒアリング: 自己評価の再確認)**
+- [ ] 4. [A-5] スキルページを「主力スキル3〜5個をハイライト + その他は一覧」の構成に変更する
+- [ ] 5. [A-5] FP資格・AWS SAAなどの資格を目立つ位置(ページ上部またはプロフィール付近)に移動する
+- [ ] 6. [B-6] `Noto Sans JP` をテーマに導入し、`layout.tsx` のInterとの競合を解消する(`src/theme.ts`, `src/app/layout.tsx`)
+- [ ] 7. [B-7] テーマに `palette` でブランドカラーを定義し、AppBar・フッター・ドロワーの配色を統一する **(要ヒアリング: ブランドカラーの決定)**
+- [ ] 8. (提案) 「Services(事業内容)」セクションを新設し、受注したい3領域(AI業務効率化 / Remotion動画制作 / 資産形成支援)を料金感・依頼の流れとともに提示する **(要ヒアリング: 掲載内容)**
+
+## フェーズ12: 改善提案 優先度3(土台整備)
+
+- [ ] 1. [C-11] `src/app/sitemap.ts` と `src/app/robots.ts` を追加する
+- [ ] 2. [C-11] favicon / appアイコン(`src/app/icon.png` 等)を追加する
+- [ ] 3. [C-11] 下層ページ(/skills, /projects, /outputs, /career, /contact)に個別のmetadataを設定する
+- [ ] 4. [C-11] JSON-LD構造化データ(Person / Organization)を追加する
+- [ ] 5. [B-8] `public/haikei.jpg`(4032×2268・2.3MB)を圧縮・WebP化する
+- [ ] 6. [B-8] `backgroundAttachment: 'fixed'` を廃止し、iOS Safariでも崩れない実装に置き換える(`WelcomeSection.tsx`, `ProfileSection.tsx`)
+- [ ] 7. [B-8] ヒーローに文字可読性のためのオーバーレイを追加し、Profileセクションと背景画像を差別化する
+- [ ] 8. [D-12] 情報設計の方針を決定する(ワンページに統一 or ヘッダーを個別ページへのリンクに変更) **(要ヒアリング)**
+- [ ] 9. [D-12] 決定した方針に沿ってヘッダー・ページ構成を修正する
+- [ ] 10. [D-13] リンクの不整合を修正する(フッターへのQiita追加、プロフィール文末「Contactから〜」のリンク化、ブログアイコンの見直し)
+- [ ] 11. [D-13] Outputsにブログ・noteの最新記事をRSSで自動表示する(YouTubeと同様の仕組み)
+- [ ] 12. 仕上げ確認(`npm run lint` / `npm run build`、Lighthouseでのパフォーマンス確認)
