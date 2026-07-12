@@ -123,8 +123,8 @@
 - [x] 5. [A-2] 実績バッジコンポーネント(登録者数・動画本数・総再生回数・ブログ月間PV・収益化達成)を作成し、ヒーロー直下と `Outputs` セクションに表示する
 - [x] 6. [A-1] キャッチコピーを「仕事の依頼主」向けに見直す。3本柱(AI業務効率化 / Remotion動画制作 / 資産形成支援)を頼めることが一目で分かる文言にする(`src/components/WelcomeSection.tsx`) **(要レビュー: 文言はSHOUと調整)**
 - [x] 7. [A-4] ヒーローのボタン6個を整理する。主CTA=「お仕事のご相談(Contact)」、セカンダリ=「YouTubeを見る」とし、その他のナビはヘッダーに任せる
-- [ ] 8. [C-10] OGP用画像(1200×630)を作成し `public/` に配置する
-- [ ] 9. [C-9, C-10] `src/app/layout.tsx` のmetadataを修正する(title/descriptionの日本語化、OGP URLを `www.shou-devlog.com` に変更、OGP画像の差し替え)
+- [x] 8. [C-10] OGP用画像(1200×630)を作成し `public/` に配置する
+- [x] 9. [C-9, C-10] `src/app/layout.tsx` のmetadataを修正する(title/descriptionの日本語化、OGP URLを `www.shou-devlog.com` に変更、OGP画像の差し替え)
 - [ ] 10. X等でシェアした際のOGP表示を実機確認する
 
 ## フェーズ11: 改善提案 優先度2(中期)

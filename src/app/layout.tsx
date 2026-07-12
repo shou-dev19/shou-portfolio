@@ -9,19 +9,24 @@ import Layout from '../components/Layout';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SHOU's Portfolio",
-  description: "This is a portfolio website by SHOU.",
+  metadataBase: new URL("https://www.shou-devlog.com"),
+  title: "UDKアセットデザイン | SHOUのポートフォリオ",
+  description:
+    "AI×エンジニアリング×FPの知見を活かし、AI業務効率化・YouTube動画制作(Remotion)・資産形成コンテンツ制作を手がけるUDKアセットデザイン(SHOU)のポートフォリオサイトです。",
   openGraph: {
-    title: "SHOU's Portfolio",
-    description: "This is a portfolio website by SHOU.",
+    title: "UDKアセットデザイン | SHOUのポートフォリオ",
+    description:
+      "AI×エンジニアリング×FPの知見を活かし、AI業務効率化・YouTube動画制作(Remotion)・資産形成コンテンツ制作を手がけるUDKアセットデザイン(SHOU)のポートフォリオサイトです。",
     type: "website",
-    url: "https://shou-portfolio.vercel.app/",
+    url: "https://www.shou-devlog.com/portfolio",
+    siteName: "UDKアセットデザイン",
+    locale: "ja_JP",
     images: [
       {
-        url: "https://shou-devlog.com/portfolio/myicon.png",
+        url: "/portfolio/ogp.jpg",
         width: 1200,
         height: 630,
-        alt: "My Portfolio OGP Image",
+        alt: "UDKアセットデザイン — AI × エンジニアリング × FP",
       },
     ],
   },
