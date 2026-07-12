@@ -86,3 +86,9 @@ src/
 
 ### Japanese Context
 This is a Japanese individual business owner's portfolio (SHOU / UDKアセットデザイン), with content in Japanese. YouTube is the primary business activity; the site is designed to highlight YouTube content over engineering background.
+
+### Coding Workflow (codex delegation)
+To conserve Claude usage, all coding must be delegated to the `codex` CLI as a subagent (run via Bash, e.g. `codex exec "<task instructions>"`). Claude acts as the director and reviewer:
+1. Write precise, self-contained instructions for each coding task and run them with `codex exec`
+2. Review the resulting diff for correctness and adherence to the task
+3. If issues are found, instruct codex to fix them; only mark the task complete after review passes
