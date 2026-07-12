@@ -2,7 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import { Box, Typography, Grid, Card, Link, SvgIcon, Divider } from '@mui/material';
 import { GitHub, RssFeed, Article, YouTube, PlayArrow } from '@mui/icons-material';
-import { getLatestVideos } from '@/lib/youtube';
+import { getChannelStats, getLatestVideos } from '@/lib/youtube';
+import { formatStatValue } from '@/lib/stats';
 
 export const revalidate = 86400;
 
@@ -40,7 +41,10 @@ const otherPlatforms = [
 ];
 
 const OutputsPage: React.FC = async () => {
-  const videos = await getLatestVideos(4);
+  const [videos, channelStats] = await Promise.all([
+    getLatestVideos(4),
+    getChannelStats(),
+  ]);
 
   return (
     <Box sx={{ py: 4, px: { xs: 2, md: 8 } }}>
@@ -78,6 +82,11 @@ const OutputsPage: React.FC = async () => {
               <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.65)', mt: 0.5 }}>
                 格安SIM・節約術・スマホ攻略を毎週配信中
               </Typography>
+              {channelStats && (
+                <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.58)', mt: 0.75, display: 'block' }}>
+                  動画{formatStatValue(channelStats.videoCount)}本 ・ 総再生{formatStatValue(channelStats.viewCount)}回
+                </Typography>
+              )}
             </Box>
           </Box>
           <Link

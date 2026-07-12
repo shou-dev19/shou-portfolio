@@ -18,7 +18,7 @@ const Section: React.FC<SectionProps> = ({ id, children }) => {
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.15 }}
       variants={sectionVariants}
     >
       <Box id={id} sx={{
