@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
+import type { Metadata } from 'next';
 
 const projectsDirectory = path.join(process.cwd(), '_contents/projects');
 
@@ -22,9 +23,36 @@ async function getProjectData(id: string) {
   return {
     id,
     content: matterResult.content,
-    ...(matterResult.data as { title: string; date: string; image: string }),
+    ...(matterResult.data as {
+      title: string;
+      date: string;
+      image?: string;
+      description?: string;
+    }),
   };
 }
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> => {
+  const projectData = await getProjectData(params.id);
+  const title = `${projectData.title} | UDKアセットデザイン`;
+  const description =
+    projectData.description ?? `${projectData.title}のプロジェクト詳細です。`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      images: projectData.image ? [projectData.image] : undefined,
+    },
+  };
+};
 
 const ProjectPage = async ({ params }: { params: { id: string } }) => {
   const projectData = await getProjectData(params.id);

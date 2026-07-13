@@ -140,10 +140,10 @@
 
 ## フェーズ12: 改善提案 優先度3(土台整備)
 
-- [ ] 1. [C-11] `src/app/sitemap.ts` と `src/app/robots.ts` を追加する
+- [x] 1. [C-11] `src/app/sitemap.ts` と `src/app/robots.ts` を追加する
 - [x] 2. [C-11] favicon / appアイコン(`src/app/icon.png` 等)を追加する
-- [ ] 3. [C-11] 下層ページ(/skills, /projects, /outputs, /career, /contact)に個別のmetadataを設定する
-- [ ] 4. [C-11] JSON-LD構造化データ(Person / Organization)を追加する
+- [x] 3. [C-11] プロジェクト詳細ページ(/projects/[id])にgenerateMetadataで個別metadataを設定する(他の下層ページはワンページ統一により廃止)
+- [x] 4. [C-11] JSON-LD構造化データ(Person / Organization)を追加する
 - [x] 5. [B-8] `public/haikei.jpg`(4032×2268・2.3MB)を圧縮・WebP化する
 - [x] 6. [B-8] `backgroundAttachment: 'fixed'` を廃止し、iOS Safariでも崩れない実装に置き換える(`WelcomeSection.tsx`, `ProfileSection.tsx`)
 - [ ] 7. [B-8] Profileセクションと背景画像を差別化する(ヒーローのオーバーレイはフェーズ10で対応済み)

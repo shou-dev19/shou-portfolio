@@ -18,7 +18,19 @@ const nextConfig = {
         basePath: false,
         permanent: true,
       },
-    ]
+      {
+        source: '/robots.txt',
+        destination: '/portfolio/robots.txt',
+        basePath: false,
+        permanent: true,
+      },
+      {
+        source: '/sitemap.xml',
+        destination: '/portfolio/sitemap.xml',
+        basePath: false,
+        permanent: true,
+      },
+    ];
   },
 };
 
