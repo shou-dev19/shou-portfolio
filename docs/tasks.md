@@ -151,4 +151,4 @@
 - [x] 9. [D-12] 決定した方針に沿ってヘッダー・ページ構成を修正する
 - [x] 10. [D-13] リンクの不整合を修正する(フッターへのQiita追加、プロフィール文末「Contactから〜」のリンク化、ブログアイコンの見直し)
 - [ ] 11. [D-13] Outputsにブログ・noteの最新記事をRSSで自動表示する(YouTubeと同様の仕組み)
-- [ ] 12. 仕上げ確認(`npm run lint` / `npm run build`、Lighthouseでのパフォーマンス確認)
+- [x] 12. 仕上げ確認(2026-07-13実施: lint/build成功、Lighthouse desktop: Performance 87 / Accessibility 98 / Best Practices 100 / SEO 100、LCP 2.4s)
