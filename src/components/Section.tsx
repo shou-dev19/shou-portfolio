@@ -23,10 +23,10 @@ const Section: React.FC<SectionProps> = ({ id, children }) => {
     >
       <Box id={id} sx={{
         my: 8,
-        backgroundImage: 'url(/portfolio/haikei.jpg)',
+        backgroundImage: 'url(/portfolio/haikei.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
+        backgroundAttachment: { xs: 'scroll', md: 'fixed' },
         p: 4,
         borderRadius: 2,
         boxShadow: 3,

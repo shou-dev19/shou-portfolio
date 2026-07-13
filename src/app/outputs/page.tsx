@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Box, Typography, Grid, Card, Link, SvgIcon, Divider } from '@mui/material';
-import { GitHub, RssFeed, Article, YouTube, PlayArrow } from '@mui/icons-material';
+import { GitHub, Language, Article, YouTube, PlayArrow } from '@mui/icons-material';
 import { getChannelStats, getLatestVideos } from '@/lib/youtube';
 import { formatStatValue } from '@/lib/stats';
 
@@ -18,7 +18,7 @@ const otherPlatforms = [
     title: 'Blog',
     url: 'https://setsuyaku-engineer.com/',
     description: 'YouTube連動の節約・資産形成ブログ。AIを活用して運営中。',
-    icon: <RssFeed fontSize="large" />,
+    icon: <Language fontSize="large" />,
   },
   {
     title: 'note',

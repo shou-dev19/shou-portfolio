@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, IconButton, SvgIcon } from '@mui/material';
-import { GitHub, X, YouTube, RssFeed } from '@mui/icons-material';
+import { Article, GitHub, Language, X, YouTube } from '@mui/icons-material';
 
 const NoteIcon: React.FC = () => (
   <SvgIcon viewBox="0 0 24 24">
@@ -58,13 +58,22 @@ const Footer: React.FC = () => {
           <NoteIcon />
         </IconButton>
         <IconButton
+          aria-label="Qiita"
+          component="a"
+          href="https://qiita.com/shou-dev19"
+          target="_blank"
+          sx={{ color: 'white' }}
+        >
+          <Article />
+        </IconButton>
+        <IconButton
           aria-label="Blog"
           component="a"
           href="https://setsuyaku-engineer.com/"
           target="_blank"
           sx={{ color: 'white' }}
         >
-          <RssFeed />
+          <Language />
         </IconButton>
       </Box>
       <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 0.5 }}>

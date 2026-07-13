@@ -136,19 +136,19 @@
 - [x] 5. [A-5] FP資格・AWS SAAなどの資格を目立つ位置(ページ上部またはプロフィール付近)に移動する
 - [x] 6. [B-6] `Noto Sans JP` をテーマに導入し、`layout.tsx` のInterとの競合を解消する(`src/theme.ts`, `src/app/layout.tsx`)
 - [x] 7. [B-7] テーマに `palette` でブランドカラーを定義し、AppBar・フッター・ドロワーの配色を統一する **(要ヒアリング: ブランドカラーの決定)**
-- [ ] 8. (提案) 「Services(事業内容)」セクションを新設し、受注したい3領域(AI業務効率化 / Remotion動画制作 / 資産形成支援)を料金感・依頼の流れとともに提示する **(要ヒアリング: 掲載内容)**
+- [ ] 8. (スキップ中: 2026-07-13判断) 「Services(事業内容)」セクションを新設し、受注したい3領域(AI業務効率化 / Remotion動画制作 / 資産形成支援)を料金感・依頼の流れとともに提示する **(要ヒアリング: 掲載内容)**
 
 ## フェーズ12: 改善提案 優先度3(土台整備)
 
 - [ ] 1. [C-11] `src/app/sitemap.ts` と `src/app/robots.ts` を追加する
-- [ ] 2. [C-11] favicon / appアイコン(`src/app/icon.png` 等)を追加する
+- [x] 2. [C-11] favicon / appアイコン(`src/app/icon.png` 等)を追加する
 - [ ] 3. [C-11] 下層ページ(/skills, /projects, /outputs, /career, /contact)に個別のmetadataを設定する
 - [ ] 4. [C-11] JSON-LD構造化データ(Person / Organization)を追加する
-- [ ] 5. [B-8] `public/haikei.jpg`(4032×2268・2.3MB)を圧縮・WebP化する
-- [ ] 6. [B-8] `backgroundAttachment: 'fixed'` を廃止し、iOS Safariでも崩れない実装に置き換える(`WelcomeSection.tsx`, `ProfileSection.tsx`)
-- [ ] 7. [B-8] ヒーローに文字可読性のためのオーバーレイを追加し、Profileセクションと背景画像を差別化する
+- [x] 5. [B-8] `public/haikei.jpg`(4032×2268・2.3MB)を圧縮・WebP化する
+- [x] 6. [B-8] `backgroundAttachment: 'fixed'` を廃止し、iOS Safariでも崩れない実装に置き換える(`WelcomeSection.tsx`, `ProfileSection.tsx`)
+- [ ] 7. [B-8] Profileセクションと背景画像を差別化する(ヒーローのオーバーレイはフェーズ10で対応済み)
 - [ ] 8. [D-12] 情報設計の方針を決定する(ワンページに統一 or ヘッダーを個別ページへのリンクに変更) **(要ヒアリング)**
 - [ ] 9. [D-12] 決定した方針に沿ってヘッダー・ページ構成を修正する
-- [ ] 10. [D-13] リンクの不整合を修正する(フッターへのQiita追加、プロフィール文末「Contactから〜」のリンク化、ブログアイコンの見直し)
+- [x] 10. [D-13] リンクの不整合を修正する(フッターへのQiita追加、プロフィール文末「Contactから〜」のリンク化、ブログアイコンの見直し)
 - [ ] 11. [D-13] Outputsにブログ・noteの最新記事をRSSで自動表示する(YouTubeと同様の仕組み)
 - [ ] 12. 仕上げ確認(`npm run lint` / `npm run build`、Lighthouseでのパフォーマンス確認)

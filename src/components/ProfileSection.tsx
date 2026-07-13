@@ -23,10 +23,10 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({ markdown }) => {
       <Box id="profile" sx={{
         my: 4,
         textAlign: 'center',
-        backgroundImage: 'url(/portfolio/haikei.jpg)',
+        backgroundImage: 'url(/portfolio/haikei.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
+        backgroundAttachment: { xs: 'scroll', md: 'fixed' },
         p: 4,
         borderRadius: 2,
         boxShadow: 3,
