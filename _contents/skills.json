@@ -2,68 +2,202 @@
   {
     "category": "Frontend",
     "skills": [
-      { "name": "HTML", "level": 4, "years": 3 },
-      { "name": "CSS", "level": 4, "years": 3 },
-      { "name": "JavaScript", "level": 5, "years": 2 },
-      { "name": "TypeScript", "level": 5, "years": 2 },
-      { "name": "React", "level": 5, "years": 1 },
-      { "name": "Next.js", "level": 4, "years": 0.1 },
-      { "name": "Angular", "level": 4, "years": 0.5 },
-      { "name": "Dart", "level": 5, "years": 3 },
-      { "name": "Flutter", "level": 5, "years": 3, "featured": true }
+      {
+        "name": "HTML",
+        "level": 5,
+        "years": 6
+      },
+      {
+        "name": "CSS",
+        "level": 5,
+        "years": 6
+      },
+      {
+        "name": "JavaScript",
+        "level": 5,
+        "years": 4
+      },
+      {
+        "name": "TypeScript",
+        "level": 5,
+        "years": 3
+      },
+      {
+        "name": "React",
+        "level": 5,
+        "years": 3
+      },
+      {
+        "name": "Next.js",
+        "level": 4,
+        "years": 1
+      },
+      {
+        "name": "Dart",
+        "level": 5,
+        "years": 4
+      },
+      {
+        "name": "Flutter",
+        "level": 5,
+        "years": 4,
+        "featured": true
+      }
     ]
   },
   {
     "category": "Backend",
     "skills": [
-      { "name": "Node.js", "level": 4, "years": 1 },
-      { "name": "Express", "level": 4, "years": 1 },
-      { "name": "Python", "level": 5, "years": 1.5 },
-      { "name": "Java", "level": 4, "years": 3 },
-      { "name": "Struts", "level": 4, "years": 3 },
-      { "name": "PHP", "level": 5, "years": 1 },
-      { "name": "Laravel", "level": 4, "years": 1 },
-      { "name": "Django", "level": 4, "years": 0.1 },
-      { "name": "Rust", "level": 4, "years": 2.5 }
+      {
+        "name": "Node.js",
+        "level": 4,
+        "years": 2
+      },
+      {
+        "name": "Express",
+        "level": 4,
+        "years": 1
+      },
+      {
+        "name": "Python",
+        "level": 5,
+        "years": 3
+      },
+      {
+        "name": "Java",
+        "level": 4,
+        "years": 3
+      },
+      {
+        "name": "Struts",
+        "level": 4,
+        "years": 3
+      },
+      {
+        "name": "PHP",
+        "level": 4,
+        "years": 1
+      },
+      {
+        "name": "Laravel",
+        "level": 4,
+        "years": 1
+      },
+      {
+        "name": "Rust",
+        "level": 4,
+        "years": 3
+      }
     ]
   },
   {
     "category": "Others",
     "skills": [
-      { "name": "AWS", "level": 5, "years": 3, "featured": true },
-      { "name": "Git", "level": 5, "years": 5 },
-      { "name": "Docker", "level": 4, "years": 3 },
-      { "name": "Figma", "level": 4, "years": 3 },
-      { "name": "TensorFlow", "level": 4, "years": 1 },
-      { "name": "Jira/Confluence", "level": 5, "years": 3 },
-      { "name": "Slack", "level": 5, "years": 3 }
+      {
+        "name": "AWS",
+        "level": 5,
+        "years": 3,
+        "featured": true
+      },
+      {
+        "name": "Git",
+        "level": 5,
+        "years": 6
+      },
+      {
+        "name": "Docker",
+        "level": 4,
+        "years": 3
+      },
+      {
+        "name": "Figma",
+        "level": 4,
+        "years": 3
+      },
+      {
+        "name": "TensorFlow",
+        "level": 4,
+        "years": 1
+      },
+      {
+        "name": "Jira/Confluence",
+        "level": 5,
+        "years": 4
+      }
     ]
   },
   {
     "category": "コンテンツ制作",
     "skills": [
-      { "name": "YouTube動画企画・制作", "level": 5, "years": 1, "featured": true },
-      { "name": "動画編集（Remotion）", "level": 5, "years": 1, "featured": true },
-      { "name": "動画編集（CapCut）", "level": 4, "years": 1 },
-      { "name": "サムネイル自動生成（Gemini API）", "level": 5, "years": 1, "featured": true },
-      { "name": "YouTube SEO", "level": 5, "years": 1 }
+      {
+        "name": "YouTube動画企画・制作",
+        "level": 5,
+        "years": 1,
+        "featured": true
+      },
+      {
+        "name": "動画編集（Remotion）",
+        "level": 5,
+        "years": 1,
+        "featured": true
+      },
+      {
+        "name": "動画編集（CapCut）",
+        "level": 4,
+        "years": 1
+      },
+      {
+        "name": "サムネイル自動生成（Gemini API）",
+        "level": 5,
+        "years": 1
+      },
+      {
+        "name": "YouTube SEO",
+        "level": 5,
+        "years": 1
+      }
     ]
   },
   {
     "category": "ライティング・情報発信",
     "skills": [
-      { "name": "テクニカルライティング（Qiita）", "level": 4, "years": 2 },
-      { "name": "ブログ・note執筆", "level": 5, "years": 2 },
-      { "name": "X（旧Twitter）発信", "level": 4, "years": 2 }
+      {
+        "name": "テクニカルライティング（Qiita）",
+        "level": 4,
+        "years": 2
+      },
+      {
+        "name": "ブログ・note執筆",
+        "level": 5,
+        "years": 2,
+        "featured": true
+      },
+      {
+        "name": "X（旧Twitter）発信",
+        "level": 4,
+        "years": 2
+      }
     ]
   },
   {
     "category": "資格",
     "skills": [
-      { "name": "AWS Certified Solutions Architect - Associate (SAA)", "date": "2025/06/16" },
-      { "name": "３級ファイナンシャル・プランニング技能士　個人資産相談業務", "date": "2025/02/14" },
-      { "name": "Registered Scrum Master (RSM)", "date": "2023/06/29" },
-      { "name": "基本情報技術者試験", "date": "2016/10/16" }
+      {
+        "name": "AWS Certified Solutions Architect - Associate (SAA)",
+        "date": "2025/06/16"
+      },
+      {
+        "name": "３級ファイナンシャル・プランニング技能士　個人資産相談業務",
+        "date": "2025/02/14"
+      },
+      {
+        "name": "Registered Scrum Master (RSM)",
+        "date": "2023/06/29"
+      },
+      {
+        "name": "基本情報技術者試験",
+        "date": "2016/10/16"
+      }
     ]
   }
 ]
