@@ -23,27 +23,12 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({ markdown }) => {
       <Box id="profile" sx={{
         my: 4,
         textAlign: 'center',
-        backgroundImage: 'url(/portfolio/haikei.webp)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: { xs: 'scroll', md: 'fixed' },
+        backgroundImage: 'linear-gradient(135deg, #0A1633 0%, #102A54 60%, #0D2A52 100%)',
         p: 4,
         borderRadius: 2,
         boxShadow: 3,
-        position: 'relative',
-        zIndex: 0,
       }}>
-        <Box sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.4)', // 半透明の黒色オーバーレイ
-          zIndex: 1,
-          borderRadius: 2,
-        }} />
-        <Box sx={{ position: 'relative', zIndex: 2 }}>
+        <Box>
           <Typography variant="h4" component="h1" gutterBottom sx={{ color: 'white' }}>
             Profile
           </Typography>
