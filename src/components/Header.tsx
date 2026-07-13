@@ -58,7 +58,7 @@ const Header: React.FC = () => {
       onClose={toggleDrawer(false)}
       PaperProps={{
         sx: {
-          background: 'linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)',
+          background: 'linear-gradient(180deg, #0A1633 0%, #102A54 55%, #075985 100%)',
           color: 'white',
           width: '60%',
           maxWidth: '300px',

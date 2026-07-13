@@ -21,10 +21,26 @@ const playfairDisplay = Playfair_Display({
 });
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0284C7',
+      light: '#38BDF8',
+      dark: '#075985',
+    },
+  },
   typography: {
     fontFamily: `${roboto.style.fontFamily}, ${notoSansJP.style.fontFamily}, sans-serif`,
     h4: {
       fontFamily: playfairDisplay.style.fontFamily,
+    },
+  },
+  components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          background: 'linear-gradient(90deg, #0A1633 0%, #102A54 100%)',
+        },
+      },
     },
   },
 });

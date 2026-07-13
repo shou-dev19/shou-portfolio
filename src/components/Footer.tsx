@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         py: 3,
         textAlign: 'center',
         mt: 'auto',
-        background: 'linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 100%)',
+        background: 'linear-gradient(180deg, #0A1633 0%, #102A54 100%)',
         color: 'white',
       }}
     >
