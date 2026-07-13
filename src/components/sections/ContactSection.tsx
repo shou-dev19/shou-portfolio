@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Box, Typography, TextField, Button, Card, CircularProgress, Alert } from '@mui/material';
 
-const ContactPage: React.FC = () => {
+const ContactSection: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -103,4 +103,4 @@ const ContactPage: React.FC = () => {
   );
 };
 
-export default ContactPage;
+export default ContactSection;

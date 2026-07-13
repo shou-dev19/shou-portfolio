@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import ProjectListClient from '../../components/ProjectListClient'; // 新しいクライアントコンポーネント
+import ProjectListClient from '../ProjectListClient'; // 新しいクライアントコンポーネント
 
 // データ型を定義
 interface ProjectData {
@@ -55,7 +55,7 @@ function getSortedProjectsData(): ProjectData[] {
   });
 }
 
-const ProjectsPage = () => {
+const ProjectsSection = () => {
   const allProjectsData = getSortedProjectsData();
 
   return (
@@ -68,4 +68,4 @@ const ProjectsPage = () => {
   );
 };
 
-export default ProjectsPage;
+export default ProjectsSection;

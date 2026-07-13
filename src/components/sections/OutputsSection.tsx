@@ -5,8 +5,6 @@ import { GitHub, Language, Article, YouTube, PlayArrow } from '@mui/icons-materi
 import { getChannelStats, getLatestVideos } from '@/lib/youtube';
 import { formatStatValue } from '@/lib/stats';
 
-export const revalidate = 86400;
-
 const NoteIcon: React.FC = () => (
   <SvgIcon viewBox="0 0 24 24" fontSize="large">
     <path d="M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h12v2H3v-2zm0 4h8v2H3v-2z" />
@@ -40,7 +38,7 @@ const otherPlatforms = [
   },
 ];
 
-const OutputsPage: React.FC = async () => {
+const OutputsSection: React.FC = async () => {
   const [videos, channelStats] = await Promise.all([
     getLatestVideos(4),
     getChannelStats(),
@@ -231,4 +229,4 @@ const OutputsPage: React.FC = async () => {
   );
 };
 
-export default OutputsPage;
+export default OutputsSection;

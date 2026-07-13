@@ -25,7 +25,7 @@ const levelDescription = {
   5: '他のメンバーに指導したり、アーキテクチャ設計ができる',
 };
 
-const SkillsPage: React.FC = () => {
+const SkillsSection: React.FC = () => {
   const skills: SkillCategory[] = skillsData;
   const qualifications = skills.find(({ category }) => category === '資格')?.skills ?? [];
   const featuredSkills = skills.flatMap(({ skills: categorySkills }) =>
@@ -142,4 +142,4 @@ const SkillsPage: React.FC = () => {
   );
 };
 
-export default SkillsPage;
+export default SkillsSection;

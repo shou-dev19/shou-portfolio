@@ -2,7 +2,7 @@ import React from 'react';
 import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
-import CareerClient from '../../components/CareerClient';
+import CareerClient from '../CareerClient';
 
 const careerDirectory = path.join(process.cwd(), '_contents/career');
 
@@ -26,10 +26,10 @@ async function getCareerData() {
   return allCareerData.sort((a, b) => (a.id > b.id ? 1 : -1));
 }
 
-const CareerPage = async () => {
+const CareerSection = async () => {
   const careerData = await getCareerData();
 
   return <CareerClient careerData={careerData} />;
 };
 
-export default CareerPage;
+export default CareerSection;

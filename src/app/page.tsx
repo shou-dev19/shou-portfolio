@@ -4,11 +4,11 @@ import fs from 'fs/promises';
 export const revalidate = 86400;
 import path from 'path';
 import HomePageClient from '../components/HomePageClient';
-import SkillsPage from './skills/page';
-import ProjectsPage from './projects/page';
-import OutputsPage from './outputs/page';
-import ContactPage from './contact/page';
-import CareerPage from './career/page';
+import SkillsSection from '../components/sections/SkillsSection';
+import ProjectsSection from '../components/sections/ProjectsSection';
+import OutputsSection from '../components/sections/OutputsSection';
+import ContactSection from '../components/sections/ContactSection';
+import CareerSection from '../components/sections/CareerSection';
 import { getChannelStats } from '@/lib/youtube';
 import { getBlogMonthlyPageViews } from '@/lib/analytics';
 
@@ -25,11 +25,11 @@ const HomePage = async () => {
       markdown={markdown}
       channelStats={channelStats}
       blogMonthlyPv={blogMonthlyPv}
-      skills={<SkillsPage />}
-      projects={<ProjectsPage />}
-      career={<CareerPage />}
-      outputs={<OutputsPage />}
-      contact={<ContactPage />}
+      skills={<SkillsSection />}
+      projects={<ProjectsSection />}
+      career={<CareerSection />}
+      outputs={<OutputsSection />}
+      contact={<ContactSection />}
     />
   );
 };
