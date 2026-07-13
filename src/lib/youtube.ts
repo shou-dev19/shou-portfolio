@@ -25,13 +25,16 @@ interface YouTubeChannelsResponse {
   }>;
 }
 
-function decodeXmlEntities(str: string): string {
+export function decodeXmlEntities(str: string): string {
   return str
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
+    .replace(/&apos;/g, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-f]+);/gi, (_, code: string) => String.fromCodePoint(parseInt(code, 16)))
+    .replace(/&#(\d+);/g, (_, code: string) => String.fromCodePoint(Number(code)));
 }
 
 export async function getLatestVideos(count: number = 4): Promise<YouTubeVideo[]> {

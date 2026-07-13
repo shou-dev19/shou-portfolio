@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Box, Typography, Grid, Card, Link, SvgIcon, Divider } from '@mui/material';
 import { GitHub, Language, Article, YouTube, PlayArrow } from '@mui/icons-material';
+import { FeedItem, getLatestFeedItems } from '@/lib/feeds';
 import { getChannelStats, getLatestVideos } from '@/lib/youtube';
 import { formatStatValue } from '@/lib/stats';
 
@@ -38,11 +39,127 @@ const otherPlatforms = [
   },
 ];
 
+interface FeedPanelProps {
+  items: FeedItem[];
+  siteName: string;
+  siteUrl: string;
+  icon: React.ReactNode;
+}
+
+const FeedPanel: React.FC<FeedPanelProps> = ({ items, siteName, siteUrl, icon }) => (
+  <Box
+    sx={{
+      height: '100%',
+      p: { xs: 2, md: 3 },
+      backgroundColor: 'rgba(0,0,0,0.55)',
+      borderRadius: 2,
+      border: '1px solid rgba(255,255,255,0.15)',
+    }}
+  >
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 2 }}>
+      <Box sx={{ display: 'flex', color: 'white' }}>{icon}</Box>
+      <Typography variant="h6" sx={{ color: 'white', fontWeight: 'bold' }}>
+        {siteName}
+      </Typography>
+      <Link
+        href={siteUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          ml: 'auto',
+          color: 'rgba(255,255,255,0.65)',
+          fontSize: '0.75rem',
+          textDecorationColor: 'rgba(255,255,255,0.3)',
+          '&:hover': { color: 'white' },
+        }}
+      >
+        サイトを見る
+      </Link>
+    </Box>
+
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+      {items.map((item) => (
+        <Link
+          key={item.url}
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
+            p: 1,
+            mx: -1,
+            borderRadius: 1,
+            textDecoration: 'none',
+            transition: 'background-color 0.2s',
+            '&:hover': { backgroundColor: 'rgba(255,255,255,0.06)' },
+          }}
+        >
+          {item.thumbnailUrl ? (
+            <Box
+              component="img"
+              src={item.thumbnailUrl}
+              alt=""
+              sx={{
+                width: 96,
+                aspectRatio: '16 / 9',
+                flexShrink: 0,
+                objectFit: 'cover',
+                borderRadius: 1,
+                backgroundColor: 'rgba(255,255,255,0.08)',
+              }}
+            />
+          ) : (
+            <Box
+              sx={{
+                width: 96,
+                aspectRatio: '16 / 9',
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 1,
+                color: 'rgba(255,255,255,0.35)',
+                backgroundColor: 'rgba(255,255,255,0.08)',
+              }}
+            >
+              <Article />
+            </Box>
+          )}
+          <Box sx={{ minWidth: 0 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'white',
+                fontWeight: 600,
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                lineHeight: 1.45,
+              }}
+            >
+              {item.title}
+            </Typography>
+            <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.48)', fontSize: '0.68rem' }}>
+              {new Date(item.publishedAt).toLocaleDateString('ja-JP')}
+            </Typography>
+          </Box>
+        </Link>
+      ))}
+    </Box>
+  </Box>
+);
+
 const OutputsSection: React.FC = async () => {
-  const [videos, channelStats] = await Promise.all([
+  const [videos, channelStats, blogItems, noteItems] = await Promise.all([
     getLatestVideos(4),
     getChannelStats(),
+    getLatestFeedItems('https://setsuyaku-engineer.com/feed/', 3),
+    getLatestFeedItems('https://note.com/shou_devlog/rss', 3),
   ]);
+  const hasFeedItems = blogItems.length > 0 || noteItems.length > 0;
 
   return (
     <Box sx={{ py: 4, px: { xs: 2, md: 8 } }}>
@@ -191,6 +308,36 @@ const OutputsSection: React.FC = async () => {
           </>
         )}
       </Box>
+
+      {hasFeedItems && (
+        <Box sx={{ mb: 6 }}>
+          <Typography variant="h6" sx={{ color: 'rgba(255,255,255,0.75)', mb: 3, textAlign: 'center' }}>
+            最新の記事
+          </Typography>
+          <Grid container spacing={3} justifyContent="center">
+            {blogItems.length > 0 && (
+              <Grid item xs={12} md={6}>
+                <FeedPanel
+                  items={blogItems}
+                  siteName="Blog"
+                  siteUrl="https://setsuyaku-engineer.com/"
+                  icon={<Language />}
+                />
+              </Grid>
+            )}
+            {noteItems.length > 0 && (
+              <Grid item xs={12} md={6}>
+                <FeedPanel
+                  items={noteItems}
+                  siteName="note"
+                  siteUrl="https://note.com/shou_devlog"
+                  icon={<NoteIcon />}
+                />
+              </Grid>
+            )}
+          </Grid>
+        </Box>
+      )}
 
       <Divider sx={{ mb: 4, borderColor: 'rgba(255,255,255,0.15)' }} />
 
