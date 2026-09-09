@@ -37,3 +37,6 @@ next-env.d.ts
 
 # screen shot
 /_screenshots
+
+# private client portfolio
+/docs/client-ai-portfolio/
