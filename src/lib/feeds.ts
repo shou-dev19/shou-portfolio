@@ -16,6 +16,8 @@ interface FeedEntry {
   published?: string;
   updated?: string;
   'media:thumbnail'?: string | { '@_url'?: string };
+  'media:content'?: string | { '@_url'?: string };
+  enclosure?: { '@_url'?: string; '@_type'?: string };
 }
 interface FeedDocument {
   rss?: { channel?: { item?: FeedEntry[] } };
@@ -54,11 +56,40 @@ const normalizeEntry = (entry: FeedEntry): FeedItem | null => {
   if (!title || title.startsWith('保護中:') || !isWebUrl(url) || !Number.isFinite(Date.parse(publishedAt))) return null;
 
   const thumbnail = entry['media:thumbnail'];
-  const thumbnailUrl = typeof thumbnail === 'string' ? thumbnail : thumbnail?.['@_url'];
+  const mediaContent = entry['media:content'];
+  const enclosure = entry.enclosure?.['@_type']?.startsWith('image/') ? entry.enclosure['@_url'] : undefined;
+  const thumbnailUrl = (typeof thumbnail === 'string' ? thumbnail : thumbnail?.['@_url'])
+    || (typeof mediaContent === 'string' ? mediaContent : mediaContent?.['@_url'])
+    || enclosure;
   return {
     title, url, publishedAt: new Date(publishedAt).toISOString(),
     ...(thumbnailUrl && isWebUrl(thumbnailUrl) ? { thumbnailUrl } : {}),
   };
+};
+
+const readOgImage = (html: string): string | undefined => {
+  const metaTags = html.match(/<meta\b[^>]*>/gi) ?? [];
+  for (const tag of metaTags) {
+    const property = tag.match(/\b(?:property|name)\s*=\s*["']([^"']+)["']/i)?.[1];
+    if (!['og:image', 'twitter:image'].includes(property?.toLowerCase() ?? '')) continue;
+    const content = tag.match(/\bcontent\s*=\s*["']([^"']+)["']/i)?.[1];
+    if (!content) continue;
+    const imageUrl = decodeXmlEntities(content);
+    if (isWebUrl(imageUrl)) return imageUrl;
+  }
+  return undefined;
+};
+
+const addMissingThumbnail = async (item: FeedItem): Promise<FeedItem> => {
+  if (item.thumbnailUrl) return item;
+  try {
+    const res = await fetch(item.url, { next: { revalidate: 86400 }, signal: AbortSignal.timeout(10000) });
+    if (!res.ok) return item;
+    const thumbnailUrl = readOgImage(await res.text());
+    return thumbnailUrl ? { ...item, thumbnailUrl } : item;
+  } catch {
+    return item;
+  }
 };
 
 export const parseFeedItems = (xml: string, count = 3): FeedItem[] => {
@@ -88,7 +119,8 @@ export const getLatestFeedItems = async (feedUrl: string, count = 3): Promise<Fe
       console.warn(`フィードの取得に失敗しました: ${feedUrl} (HTTP ${res.status})`);
       return [];
     }
-    return parseFeedItems(await res.text(), count);
+    const items = parseFeedItems(await res.text(), count);
+    return Promise.all(items.map(addMissingThumbnail));
   } catch {
     console.warn(`フィードの取得中にエラーが発生しました: ${feedUrl}`);
     return [];

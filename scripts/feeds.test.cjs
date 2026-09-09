@@ -45,6 +45,15 @@ test('RSS preserves Blog/note titles, dates, and both thumbnail formats', () => 
   assert.equal(result[1].thumbnailUrl, 'https://example.com/note.png');
 });
 
+test('RSS supports media content and image enclosures as thumbnail fallbacks', () => {
+  const result = parseFeedItems(rss(`<item><title>media</title><link>https://example.com/media</link>
+    <pubDate>2026-09-08</pubDate><media:content url="https://example.com/media.jpg"/></item>
+    <item><title>enclosure</title><link>https://example.com/enclosure</link><pubDate>2026-09-07</pubDate>
+    <enclosure url="https://example.com/enclosure.webp" type="image/webp"/></item>`));
+  assert.equal(result[0].thumbnailUrl, 'https://example.com/media.jpg');
+  assert.equal(result[1].thumbnailUrl, 'https://example.com/enclosure.webp');
+});
+
 test('Atom selects the article link and orders by publication, not edit date', () => {
   const result = parseFeedItems(atom(
     atomEntry('older', '2026-08-04T17:50:22+09:00', '2026-09-08T00:00:00Z') +
@@ -97,12 +106,15 @@ test('Limits results after deduplication and handles empty or malformed feeds', 
 });
 
 test('Fetch success uses daily revalidation and a timeout signal', async (t) => {
-  t.mock.method(global, 'fetch', async (_url, options) => {
+  t.mock.method(global, 'fetch', async (url, options) => {
     assert.equal(options.next.revalidate, 86400);
     assert.ok(options.signal instanceof AbortSignal);
-    return new Response(atom(atomEntry('one', '2026-09-08')));
+    if (url === 'https://example.com/feed') return new Response(atom(atomEntry('one', '2026-09-08')));
+    return new Response('<meta property="og:image" content="https://example.com/cover.jpg?x=1&amp;y=2">');
   });
-  assert.equal((await getLatestFeedItems('https://example.com/feed')).length, 1);
+  const result = await getLatestFeedItems('https://example.com/feed');
+  assert.equal(result.length, 1);
+  assert.equal(result[0].thumbnailUrl, 'https://example.com/cover.jpg?x=1&y=2');
 });
 
 test('HTTP and network failures return an empty list for the UI fallback', async (t) => {

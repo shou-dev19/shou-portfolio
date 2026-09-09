@@ -20,15 +20,29 @@ const FeedPanel = ({ items, name, url, description, accent }: FeedPanelProps) =>
         {items.map((item) => (
           <Box component="li" key={item.url} sx={{ borderTop: '1px solid #304157' }}>
             <Link href={item.url} target="_blank" rel="noopener noreferrer"
-              sx={{ display: 'block', py: 2, color: 'white', textDecoration: 'none',
+              sx={{ display: 'flex', gap: 1.5, py: 2, color: 'white', textDecoration: 'none',
                 '&:hover': { color: accent }, '&:focus-visible': { outline: `2px solid ${accent}`, outlineOffset: 3 } }}>
-              <Typography component="time" dateTime={item.publishedAt} variant="caption"
-                sx={{ display: 'block', color: '#a8bbcf', mb: 0.75, fontVariantNumeric: 'tabular-nums' }}>
-                {new Date(item.publishedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' })}
-              </Typography>
-              <Typography component="span" variant="body2" sx={{ fontWeight: 600, lineHeight: 1.85, overflowWrap: 'anywhere' }}>
-                {item.title}
-              </Typography>
+              <Box sx={{ width: 104, aspectRatio: '16 / 10', flexShrink: 0, overflow: 'hidden', borderRadius: 1,
+                bgcolor: '#182a40', border: '1px solid rgba(255,255,255,0.09)', display: 'grid', placeItems: 'center' }}>
+                {item.thumbnailUrl ? (
+                  <Box component="img" src={item.thumbnailUrl} alt="" loading="lazy" referrerPolicy="no-referrer"
+                    sx={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 180ms ease',
+                      'a:hover &': { transform: 'scale(1.04)' } }} />
+                ) : (
+                  <Typography aria-hidden="true" sx={{ color: accent, fontSize: '0.7rem', fontWeight: 800,
+                    letterSpacing: '0.08em', textTransform: 'uppercase' }}>{name}</Typography>
+                )}
+              </Box>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography component="time" dateTime={item.publishedAt} variant="caption"
+                  sx={{ display: 'block', color: '#a8bbcf', mb: 0.5, fontVariantNumeric: 'tabular-nums' }}>
+                  {new Date(item.publishedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' })}
+                </Typography>
+                <Typography component="span" variant="body2" sx={{ fontWeight: 600, lineHeight: 1.65, overflowWrap: 'anywhere',
+                  display: '-webkit-box', WebkitBoxOrient: 'vertical', WebkitLineClamp: 3, overflow: 'hidden' }}>
+                  {item.title}
+                </Typography>
+              </Box>
             </Link>
           </Box>
         ))}
