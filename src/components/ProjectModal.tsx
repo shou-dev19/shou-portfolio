@@ -1,14 +1,16 @@
-import React from 'react';
-import { Modal, Box, Typography, Button, Grid, IconButton } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LaunchIcon from '@mui/icons-material/Launch';
-import CloseIcon from '@mui/icons-material/Close';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+'use client';
+
+import { useState } from 'react';
+import { Dialog, Box, Typography, Button, IconButton, DialogContent, useMediaQuery, useTheme } from '@mui/material';
+import { GitHub, Launch, Close } from '@mui/icons-material';
+import ProjectMarkdown from './projects/ProjectMarkdown';
+import ProjectImage from './projects/ProjectImage';
+import ProjectImageViewer, { ProjectFigure } from './projects/ProjectImageViewer';
 
 interface ProjectModalProps {
   project: {
     title: string;
+    description?: string;
     content: string;
     github?: string;
     demo?: string;
@@ -19,136 +21,56 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const [selectedFigure, setSelectedFigure] = useState<ProjectFigure | null>(null);
+  const diagrams = [
+    { src: project.architectureImage, title: 'システムアーキテクチャ' },
+    { src: project.deployFlowImage, title: 'CI/CDワークフロー' },
+  ];
+
   return (
-    <Modal
-      open={true}
-      onClose={onClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: { xs: '90%', md: '80%' },
-          maxWidth: '900px',
-          bgcolor: 'background.paper',
-          boxShadow: 24,
-          p: { xs: 2, md: 4 },
-          borderRadius: 2,
-          outline: 'none',
-          maxHeight: '90vh',
-          overflowY: 'auto',
-        }}
-      >
-        <IconButton
-          aria-label="close"
-          onClick={onClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
+    <Dialog open onClose={onClose} fullWidth maxWidth="lg" fullScreen={fullScreen}
+      aria-labelledby="project-dialog-title" aria-describedby={project.description ? 'project-dialog-summary' : undefined}
+      PaperProps={{ sx: { borderRadius: { xs: 0, sm: 3 }, maxHeight: { sm: '92dvh' }, bgcolor: '#f8fafc' } }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2,
+        px: { xs: 2, sm: 4 }, py: 1.25, borderBottom: '1px solid #dce4ed', bgcolor: 'white', flexShrink: 0 }}>
+        <Typography variant="overline" sx={{ color: '#52657b', letterSpacing: '0.14em', fontWeight: 700 }}>
+          PROJECT / プロジェクト詳細
+        </Typography>
+        <IconButton autoFocus aria-label="プロジェクト詳細を閉じる" onClick={onClose} sx={{ color: '#233c57', width: 44, height: 44 }}>
+          <Close />
         </IconButton>
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Typography id="modal-modal-title" variant="h4" component="h2" gutterBottom>
-              {project.title}
-            </Typography>
-            <Box sx={{ mt: 2, mb: 2 }}>
-              {project.github && (
-                <Button
-                  variant="outlined"
-                  startIcon={<GitHubIcon />}
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{ mr: 1, mb: { xs: 1, md: 0 } }}
-                >
-                  GitHub
-                </Button>
-              )}
-              {project.demo && (
-                <Button
-                  variant="contained"
-                  startIcon={<LaunchIcon />}
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Demo
-                </Button>
-              )}
-            </Box>
-            <Box id="modal-modal-description" sx={{ mt: 2, '& a': { color: 'primary.main' } }}>
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{project.content}</ReactMarkdown>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            {project.image && (
-              <Box
-                component="img"
-                src={project.image}
-                alt={project.title}
-                sx={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: 2,
-                  objectFit: 'cover',
-                }}
-              />
-            )}
-            {(project.architectureImage || project.deployFlowImage) && (
-              <Box sx={{ mt: 3 }}>
-                {project.architectureImage && (
-                  <>
-                    <Typography variant="h6" gutterBottom>
-                      システムアーキテクチャ
-                    </Typography>
-                    <Box
-                      component="img"
-                      src={project.architectureImage}
-                      alt="システムアーキテクチャ図"
-                      sx={{
-                        width: '100%',
-                        height: 'auto',
-                        borderRadius: 2,
-                        objectFit: 'cover',
-                        mb: 3,
-                      }}
-                    />
-                  </>
-                )}
-                {project.deployFlowImage && (
-                  <>
-                    <Typography variant="h6" gutterBottom>
-                      CI/CDワークフロー
-                    </Typography>
-                    <Box
-                      component="img"
-                      src={project.deployFlowImage}
-                      alt="CI/CDワークフロー図"
-                      sx={{
-                        width: '100%',
-                        height: 'auto',
-                        borderRadius: 2,
-                        objectFit: 'cover',
-                      }}
-                    />
-                  </>
-                )}
-              </Box>
-            )}
-          </Grid>
-        </Grid>
       </Box>
-    </Modal>
+      <DialogContent sx={{ p: 0, scrollBehavior: 'auto' }}>
+        <Box sx={{ px: { xs: 2.5, sm: 5, md: 7 }, pt: { xs: 3, sm: 5 }, pb: 4, bgcolor: 'white' }}>
+          <Typography id="project-dialog-title" component="h2" sx={{ color: '#102a46', fontSize: { xs: '1.55rem', sm: '2.1rem' },
+            lineHeight: 1.5, fontWeight: 700, letterSpacing: '-0.025em', overflowWrap: 'anywhere', mb: 2 }}>
+            {project.title}
+          </Typography>
+          {project.description && <Typography id="project-dialog-summary" sx={{ color: '#4b6076', lineHeight: 1.95, maxWidth: '52em' }}>
+            {project.description}
+          </Typography>}
+          {(project.github || project.demo) && (
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, mt: 3 }}>
+              {project.github && <Button variant="outlined" startIcon={<GitHub />} href={project.github} target="_blank" rel="noopener noreferrer">GitHub</Button>}
+              {project.demo && <Button variant="contained" startIcon={<Launch />} href={project.demo} target="_blank" rel="noopener noreferrer">デモを見る</Button>}
+            </Box>
+          )}
+        </Box>
+        <Box sx={{ px: { xs: 2.5, sm: 5, md: 7 }, py: { xs: 3, sm: 4 } }}>
+          {diagrams.map(({ src, title }) => src && (
+            <ProjectImage key={src} figure={{ src, title }} onOpen={setSelectedFigure} />
+          ))}
+          <Box sx={{ maxWidth: '48rem', mx: 'auto', my: { xs: 3, sm: 5 } }}>
+            <ProjectMarkdown content={project.content} />
+          </Box>
+          {project.image && <ProjectImage figure={{ src: project.image, title: 'プロジェクトイメージ' }} onOpen={setSelectedFigure} />}
+        </Box>
+      </DialogContent>
+      {selectedFigure && <ProjectImageViewer figure={selectedFigure} onClose={() => setSelectedFigure(null)} />}
+    </Dialog>
   );
 };
 

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:feeds": "node --test scripts/feeds.test.cjs"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -15,6 +16,7 @@
     "@mui/icons-material": "^5.15.18",
     "@mui/material": "^5.15.18",
     "@mui/material-nextjs": "^5.15.11",
+    "fast-xml-parser": "^5.11.1",
     "framer-motion": "^12.23.9",
     "gray-matter": "^4.0.3",
     "next": "14.2.3",

@@ -18,16 +18,19 @@ const Section: React.FC<SectionProps> = ({ id, children }) => {
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
+      // The article section can be taller than several mobile viewports.
+      viewport={{ once: true, amount: id === 'outputs' ? 'some' : 0.15 }}
       variants={sectionVariants}
     >
       <Box id={id} sx={{
         my: 8,
+        scrollMarginTop: id === 'outputs' || id === 'projects' ? '80px' : undefined,
         backgroundImage: 'url(/portfolio/haikei.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: { xs: 'scroll', md: 'fixed' },
         p: 4,
+        px: id === 'outputs' || id === 'projects' ? { xs: 2, sm: 4 } : 4,
         borderRadius: 2,
         boxShadow: 3,
         position: 'relative',

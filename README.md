@@ -44,7 +44,7 @@ graph TD
     subgraph "外部サービス"
         F["Resend (メール送信)"]
         G["YouTube RSS / Data API"]
-        H["Blog・note RSS"]
+        H["Qiita Atom / Blog・note RSS"]
         I["GA4 Data API (ブログ月間PV)"]
     end
 
@@ -64,9 +64,9 @@ graph TD
 
 - **ヒーロー / プロフィール**: 自己紹介と、YouTube 登録者数・ブログ月間PVなどの実績数字（Stats Badges）を自動表示
 - **スキル**: カテゴリ別（Frontend / Backend / コンテンツ制作 / ライティング・情報発信 / 資格 ほか）のスキル一覧を `skills.json` から生成
-- **プロジェクト**: 旗艦プロジェクト `yt-factory` を含む実績をモーダルで詳細表示
+- **プロジェクト**: 旗艦プロジェクト `yt-factory` を含む実績を読みやすい縦型モーダルで詳細表示。構成図・画像は全画面で拡大・原寸表示でき、スマホやキーボード操作にも対応
 - **経歴（Career）**: これまでの職務経歴をタイムライン表示
-- **アウトプット（Outputs）**: YouTube 最新動画に加え、Blog・note の最新記事を RSS から自動取得して表示
+- **アウトプット（Outputs）**: AIの実践と知見共有を代表記事とともに紹介。Qiita・Blog・note の最新3記事を Atom / RSS から自動取得し、YouTube 最新動画も表示
 - **お問い合わせ**: Resend を利用したメール送信フォーム
 - **レスポンシブデザイン**: PC・モバイル両対応、iOS 向けアイコン最適化
 - **SEO 基盤**: `sitemap.xml` / `robots.txt` / OGP 画像 / JSON-LD 構造化データ
@@ -106,7 +106,7 @@ graph TD
 │   │   └── *.tsx                # Header, Footer, Layout, StatsBadges 等
 │   ├── lib/
 │   │   ├── youtube.ts           # YouTube RSS / Data API 取得
-│   │   ├── feeds.ts             # Blog・note RSS 取得
+│   │   ├── feeds.ts             # Qiita Atom / Blog・note RSS 取得
 │   │   ├── analytics.ts         # GA4 ブログ月間PV取得
 │   │   └── stats.ts             # 実績数字のフォーマット
 │   └── theme.ts                 # MUIテーマ (ブランドカラー / フォント)
@@ -131,7 +131,7 @@ graph TD
     B -->|Trigger| C(Vercel)
     C -->|Build & Deploy| D(本番環境)
     E["GitHub Actions\n(毎週水曜 19:00 JST)"] -->|Deploy Hook| C
-    C -->|YouTube / Blog / note / GA4 取得| F[外部サービス]
+    C -->|YouTube / Qiita / Blog / note / GA4 取得| F[外部サービス]
 
     subgraph "Local"
       A
@@ -155,7 +155,7 @@ graph TD
 ### 定期ビルド（実績数字・最新記事の更新）
 
 毎週水曜日 19:00 JST に GitHub Actions が Vercel の Deploy Hook を呼び出し、サイトを自動リビルドします。
-リビルド時に YouTube・Blog・note の各フィードと実績数字を取得し直すことで、Outputs や Stats Badges が常に最新の状態を保ちます。
+リビルド時に YouTube・Qiita・Blog・note の各フィードと実績数字を取得し直すことで、Outputs や Stats Badges が常に最新の状態を保ちます。
 
 **設定方法**（初回のみ）:
 1. Vercelダッシュボード → Settings → Git → Deploy Hooks でフック URL を発行
@@ -181,4 +181,11 @@ npm run dev        # 開発サーバー起動
 npm run build      # 本番ビルド
 npm start          # 本番サーバー起動
 npm run lint       # ESLint
+npm run test:feeds # RSS / Atom の回帰テスト
 ```
+
+### 記事の表示と更新
+
+- 記事一覧は公開日順で各媒体3件、24時間ごとに再検証します。取得が失敗した場合は媒体へのリンクと案内を表示します。
+- AIの代表記事は `src/components/outputs/AiWritingFeature.tsx` の `articles` で編集します。新着一覧とは別に固定表示されます。
+- Qiitaは公開Atomフィードを利用するため、追加のAPIキー設定は不要です。

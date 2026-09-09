@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="ja-JP" xmlns="http://www.w3.org/2005/Atom">
+  <id>tag:qiita.com,2005:/shou-dev19/feed</id>
+  <link rel="alternate" type="text/html" href="https://qiita.com"/>
+  <link rel="self" type="application/atom+xml" href="https://qiita.com/shou-dev19/feed"/>
+  <title>shou-dev19の記事 - Qiita</title>
+  <description>Qiitaでユーザーshou-dev19による最近の記事</description>
+  <updated>2026-08-11T08:03:17+09:00</updated>
+  <link>https://qiita.com/shou-dev19</link>
+  <entry>
+    <id>tag:qiita.com,2005:PublicArticle/2250405</id>
+    <published>2026-08-11T08:03:17+09:00</published>
+    <updated>2026-08-22T00:35:27+09:00</updated>
+    <link rel="alternate" type="text/html" href="https://qiita.com/shou-dev19/items/0f4ee962b89a322eefc0"/>
+    <url>https://qiita.com/shou-dev19/items/0f4ee962b89a322eefc0</url>
+    <title>【後編】AI駆動開発、用語で挫折していませんか？ ——「ハーネス」がわかると、いま業界で何が起きているかが見える</title>
+    <author>
+      <name>shou-dev19</name>
+    </author>
+  </entry>
+  <entry>
+    <id>tag:qiita.com,2005:PublicArticle/2249999</id>
+    <published>2026-08-04T17:50:22+09:00</published>
+    <updated>2026-08-12T11:28:53+09:00</updated>
+    <link rel="alternate" type="text/html" href="https://qiita.com/shou-dev19/items/e1583af614a573e4b245"/>
+    <url>https://qiita.com/shou-dev19/items/e1583af614a573e4b245</url>
+    <title>【前編】AI駆動開発、用語で挫折していませんか？ ——歴史をたどれば「Skills」も「Hooks」も一本の線でつながる</title>
+    <author>
+      <name>shou-dev19</name>
+    </author>
+  </entry>
+  <entry>
+    <id>tag:qiita.com,2005:PublicArticle/2157934</id>
+    <published>2026-02-12T22:24:43+09:00</published>
+    <updated>2026-02-12T22:24:43+09:00</updated>
+    <link rel="alternate" type="text/html" href="https://qiita.com/shou-dev19/items/628f6f8757346a43f1e1"/>
+    <url>https://qiita.com/shou-dev19/items/628f6f8757346a43f1e1</url>
+    <title>Antigravityの更新でDevContainerが使えない？WSL2移行時のターミナル設定の罠と解決法</title>
+    <author>
+      <name>shou-dev19</name>
+    </author>
+  </entry>
+  <entry>
+    <id>tag:qiita.com,2005:PublicArticle/2078737</id>
+    <published>2025-09-10T23:38:49+09:00</published>
+    <updated>2025-09-10T23:41:25+09:00</updated>
+    <link rel="alternate" type="text/html" href="https://qiita.com/shou-dev19/items/828f628efc3ec79a1f8d"/>
+    <url>https://qiita.com/shou-dev19/items/828f628efc3ec79a1f8d</url>
+    <title>僕が考えた最強のGeminiCLI環境構築 - DevContainer, VSCode, GitHub Actions, MCPサーバー導入 -</title>
+    <author>
+      <name>shou-dev19</name>
+    </author>
+  </entry>
+</feed>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import ProjectModal from './ProjectModal';
 
 // データ型を定義
@@ -50,24 +50,34 @@ const ProjectListClient: React.FC<ProjectListClientProps> = ({ projects }) => {
                   cursor: 'pointer',
                 },
               }}
-              onClick={() => handleOpenModal(project)}
             >
-              {project.image && (
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={project.image}
-                  alt={project.title}
-                />
-              )}
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {project.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {project.description}
-                </Typography>
-              </CardContent>
+              <CardActionArea
+                id={`project-${project.id}`}
+                aria-label={`${project.title}の詳細を見る`}
+                aria-haspopup="dialog"
+                onClick={() => handleOpenModal(project)}
+                sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'stretch',
+                  justifyContent: 'flex-start', scrollMarginTop: '100px',
+                  '&.Mui-focusVisible': { outline: '3px solid #0284c7', outlineOffset: -3 } }}
+              >
+                {project.image && (
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={project.image}
+                    alt={project.title}
+                  />
+                )}
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h3">
+                    {project.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {project.description}
+                  </Typography>
+                  <Typography sx={{ mt: 2, color: '#0369a1', fontSize: '0.85rem', fontWeight: 600 }}>詳しく見る →</Typography>
+                </CardContent>
+              </CardActionArea>
             </Card>
           </Grid>
         ))}
